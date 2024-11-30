@@ -10,4 +10,9 @@
         android:name="com.example.classflow.MainLogin"
         android:label="fragment_main_login"
         tools:layout="@layout/fragment_main_login" />
+    <fragment
+        android:id="@+id/studentMainScreen"
+        android:name="com.example.classflow.student.StudentMainScreen"
+        android:label="fragment_student_main_screen"
+        tools:layout="@layout/fragment_student_main_screen" />
 </navigation>

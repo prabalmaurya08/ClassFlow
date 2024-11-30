@@ -1,4 +1,4 @@
-package com.example.classflow.faculty
+package com.example.classflow.faculty.facultyLogin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
