@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".student.studentLogin.StudentLogin">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/Stu_Email_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingVertical="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Email Address"/>
+    <EditText
+        android:id="@+id/Stu_LoginEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Stu_Email_id"
+        android:background="@drawable/ic_input_bg"
+        android:hint="Enter Email Address"/>
+    <TextView
+        android:id="@+id/Stu_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Stu_LoginEmailAddress"
+        android:paddingVertical="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Password"/>
+    <EditText
+        android:id="@+id/Stu_Loginpassword"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Stu_password"
+        android:background="@drawable/ic_input_bg"
+        android:hint="Enter Password"/>
+    <Button
+        android:id="@+id/StuLoginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Stu_Loginpassword"
+        android:layout_marginVertical="20dp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/blue"
+        android:text="Login"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
