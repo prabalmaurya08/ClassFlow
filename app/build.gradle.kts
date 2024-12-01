@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("com.google.gms.google-services")
+  id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -58,5 +59,9 @@ dependencies {
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+
+    implementation(libs.androidx.navigation.fragment.ktx.v260)
+    implementation (libs.androidx.navigation.ui.ktx.v260)
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.classflow.mvvm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
@@ -97,7 +98,7 @@ class UserRepository {
                 firestore.collection("sections").document(user.studentSection).set(sectionData)
             }
     }
-    private fun saveFacultyProfile(facultyId: String,user: User){
+    private fun saveFacultyProfile(userId: String,user: User){
         val facultyData = hashMapOf(
 
             "name" to user.name ,
@@ -108,7 +109,15 @@ class UserRepository {
 
 
         )
-        firestore.collection("facultyProfiles").document(facultyId).set(facultyData)
+        firestore.collection("facultyProfiles")
+            .document(user.facultyId) // Using facultyId as the document ID
+            .set(facultyData)
+            .addOnSuccessListener {
+                Log.d("FacultyViewModel", "Faculty profile saved successfully.")
+            }
+            .addOnFailureListener { exception ->
+                Log.e("FacultyViewModel", "Failed to save faculty profile: ${exception.message}")
+            }
     }
 
     private fun saveAdminProfile(adminId: String,user: User){

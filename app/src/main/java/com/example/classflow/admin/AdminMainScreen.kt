@@ -27,19 +27,21 @@ class AdminMainScreen : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding= FragmentAdminMainScreenBinding.inflate(layoutInflater)
+        viewPager=binding.viewPager
+        bottomNavigationView=binding.adminBottomNav
         setupViewPagerWithBottomNavigation()
         return binding.root
     }
 
     private fun setupViewPagerWithBottomNavigation() {
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 bottomNavigationView.menu.getItem(position).isChecked = true
             }
         })
-       binding.adminBottomNav.setOnItemSelectedListener { item ->
+        bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_student-> viewPager.currentItem = 0
                 R.id.bottom_nav_facutly -> viewPager.currentItem = 1

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="16dp"
+
+    tools:context=".admin.adminFaculty.AdminFacultyDetailScreen">
+    <TextView
+        android:id="@+id/faculty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Faculty Details"
+        android:layout_marginTop="50dp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/facultyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faculty Name"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/facultyId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faculty ID"
+        android:textSize="16sp" />
+
+    <!-- Timetable Upload -->
+    <Button
+        android:id="@+id/uploadTimetableButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Timetable" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/sectionSpinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/section_spinner"
+            android:layout_marginHorizontal="5dp"
+            android:layout_height="48dp" />
+
+        <Spinner
+            android:id="@+id/subjectSpinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/section_spinner"
+            android:layout_height="48dp" />
+    </LinearLayout>
+
+    <!-- Allot Class Section -->
+
+
+    <Button
+        android:id="@+id/allotClassesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Allot Class" />
+
+</LinearLayout>

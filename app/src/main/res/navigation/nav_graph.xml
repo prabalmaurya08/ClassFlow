@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainLogin">
+    app:startDestination="@id/adminMainScreen">
 
     <fragment
         android:id="@+id/mainLogin"
@@ -67,7 +67,41 @@
             app:destination="@id/adminMainScreen" />
     </fragment>
     <fragment
+        android:id="@+id/facultyUploadTimeTableAndClassAllot"
+        android:name="com.example.classflow.admin.adminFaculty.FacultyUploadTimeTableAndClassAllot"
+        android:label="fragment_faculty_upload_time_table_and_class_allot"
+        tools:layout="@layout/fragment_faculty_upload_time_table_and_class_allot" >
+        <action
+            android:id="@+id/action_facultyListFragment_to_facultyDetailFragment"
+            app:destination="@id/adminFacultyDetailScreen">
+            <argument
+                android:name="facultyId"
+                app:argType="string" />
+            <argument
+                android:name="facultyName"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/studentUploadTimeTable"
+        android:name="com.example.classflow.admin.adminStudent.StudentUploadTimeTable"
+        android:label="fragment_studentupload_time_table"
+        tools:layout="@layout/fragment_studentupload_time_table" />
+    <fragment
         android:id="@+id/adminMainScreen"
         android:name="com.example.classflow.admin.AdminMainScreen"
-        android:label="AdminMainScreen" />
+        android:label="fragment_admin_main_screen"
+        tools:layout="@layout/fragment_admin_main_screen" />
+    <fragment
+        android:id="@+id/adminFacultyDetailScreen"
+        android:name="com.example.classflow.admin.adminFaculty.AdminFacultyDetailScreen"
+        android:label="fragment_admin_faculty_detail_screen"
+        tools:layout="@layout/fragment_admin_faculty_detail_screen" >
+        <argument
+            android:name="facultyId"
+            app:argType="string" />
+        <argument
+            android:name="facultyName"
+            app:argType="string" />
+    </fragment>
 </navigation>

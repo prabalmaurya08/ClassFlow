@@ -11,3 +11,16 @@ data class User(
 
 
 )
+
+data class Faculty(
+    val facultyId: String = "",
+    val name: String = "",
+    val email: String = "",
+    val timetableUrl: String? = null,
+    val allottedClasses: List<AllottedClass>? = null
+)
+
+data class AllottedClass(
+    val section: String,
+    val subject: String
+)
