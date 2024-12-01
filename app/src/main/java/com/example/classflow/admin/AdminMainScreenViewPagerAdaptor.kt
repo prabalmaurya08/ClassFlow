@@ -1,12 +1,9 @@
-package com.example.classflow.Admin
+package com.example.classflow.admin
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.classflow.R
+import com.example.classflow.admin.adminFaculty.FacultyUploadTimeTableAndClassAllot
+import com.example.classflow.admin.adminStudent.StudentuploadTimeTable
 
 
 class AdminMainScreenViewPagerAdaptor (fragment: Fragment): FragmentStateAdapter(fragment) {

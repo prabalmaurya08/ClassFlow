@@ -1,4 +1,4 @@
-package com.example.classflow.Admin
+package com.example.classflow.admin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
