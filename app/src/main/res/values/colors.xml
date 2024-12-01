@@ -7,7 +7,7 @@
     <color name="bluedark">#0b488c</color>
     <color name="lightblack">#03182e</color>
     <color name="beige">#e6e6e6</color>
-
+    <color name="grey">#C5C6CC</color>
 
     <color name="blue">#006FFD</color>
 </resources>
