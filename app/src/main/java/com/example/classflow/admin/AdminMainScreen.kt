@@ -32,13 +32,14 @@ class AdminMainScreen : Fragment() {
     }
 
     private fun setupViewPagerWithBottomNavigation() {
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 bottomNavigationView.menu.getItem(position).isChecked = true
             }
         })
-        bottomNavigationView.setOnItemSelectedListener { item ->
+       binding.adminBottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_student-> viewPager.currentItem = 0
                 R.id.bottom_nav_facutly -> viewPager.currentItem = 1

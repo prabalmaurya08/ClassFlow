@@ -54,6 +54,10 @@ class StudentLogin : Fragment() {
             listener?.onStudentSignupClicked()
         }
 
+        binding.adminLogin.setOnClickListener {
+            listener?.onAdminLoginClicked()
+        }
+
         studentLogin()
         return binding.root
     }
@@ -118,6 +122,7 @@ class StudentLogin : Fragment() {
     interface OnStudent{
         fun onStudentSignupClicked()
         fun onStudentLoginSuccess()
+        fun onAdminLoginClicked()
     }
 
 

@@ -6,7 +6,7 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".admin.adminLogin.adminLogin">
+    tools:context=".admin.adminLogin.AdminLogin">
 
     <ImageView
         android:id="@+id/AdminBackButton"
@@ -24,7 +24,7 @@
         android:id="@+id/AdminLoginHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Admin Login"
         android:textSize="20sp"
         android:padding="5dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/AdminLoginHeading"
         android:paddingVertical="10dp"
         android:textSize="16sp"
+        android:layout_marginTop="30dp"
         android:textStyle="bold"
         android:text="Email Address"/>
     <EditText
@@ -60,7 +61,7 @@
         android:textStyle="bold"
         android:text="Password"/>
     <EditText
-        android:id="@+id/admin_Loginpassword"
+        android:id="@+id/admin_LoginPassword"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,7 +74,7 @@
         android:id="@+id/adminLoginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/admin_Loginpassword"
+        app:layout_constraintTop_toBottomOf="@id/admin_LoginPassword"
         android:layout_marginVertical="20dp"
         android:textStyle="bold"
         android:backgroundTint="@color/blue"
