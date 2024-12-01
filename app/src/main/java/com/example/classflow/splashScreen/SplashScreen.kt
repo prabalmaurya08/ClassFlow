@@ -1,4 +1,4 @@
-package com.example.classflow.SplashScreen
+package com.example.classflow.splashScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

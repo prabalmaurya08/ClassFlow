@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".student.StudentSignUp"
+    tools:context=".student.studentLogin.StudentSignUp"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="16dp">
 
@@ -41,7 +41,7 @@
         android:text="Name"/>
     <EditText
         android:layout_margin="5dp"
-        android:id="@+id/Stu_enter_name"
+        android:id="@+id/student_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/Stu_name"
@@ -52,25 +52,26 @@
         android:id="@+id/Stu_class"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Stu_enter_name"
+        app:layout_constraintTop_toBottomOf="@id/student_name"
         android:paddingVertical="10dp"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:text="Class"/>
-    <EditText
-        android:layout_margin="5dp"
-        android:id="@+id/Stu_enter_class"
+        android:text="Section"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/studentSection"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:paddingVertical="10dp"
         app:layout_constraintTop_toBottomOf="@id/Stu_class"
-        android:background="@drawable/ic_input_bg"
-        android:hint="Enter Class and Section"/>
+        android:background="@drawable/section_spinner" />
     <TextView
         android:layout_margin="5dp"
         android:id="@+id/Stu_RollNo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Stu_enter_class"
+        app:layout_constraintTop_toBottomOf="@id/studentSection"
         android:paddingVertical="10dp"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -113,7 +114,7 @@
         android:textStyle="bold"
         android:text="Password"/>
     <EditText
-        android:id="@+id/Stu_SignUppassword"
+        android:id="@+id/student_password"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,7 +127,7 @@
         android:id="@+id/StuSignUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Stu_SignUppassword"
+        app:layout_constraintTop_toBottomOf="@id/student_password"
         android:layout_marginTop="20dp"
         android:layout_marginVertical="20dp"
         android:textSize="18sp"
