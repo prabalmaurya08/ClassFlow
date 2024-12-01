@@ -3,7 +3,7 @@ package com.example.classflow.admin
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.classflow.admin.adminFaculty.FacultyUploadTimeTableAndClassAllot
-import com.example.classflow.admin.adminStudent.StudentuploadTimeTable
+import com.example.classflow.admin.adminStudent.StudentUploadTimeTable
 
 
 class AdminMainScreenViewPagerAdaptor (fragment: Fragment): FragmentStateAdapter(fragment) {
@@ -15,7 +15,7 @@ class AdminMainScreenViewPagerAdaptor (fragment: Fragment): FragmentStateAdapter
     override fun createFragment(position: Int): Fragment {
         // Return the appropriate fragment for each position
         return when (position){
-            0 -> StudentuploadTimeTable()
+            0 -> StudentUploadTimeTable()
             1 -> FacultyUploadTimeTableAndClassAllot()
             else -> throw IllegalStateException("Unexcepted position: $position")
         }
