@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".student.studentAssignment.StudentAssignment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/StuAssignmentToolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-</FrameLayout>
+            <ImageView
+                android:id="@+id/StuCFlogo"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+
+                android:src="@drawable/logoclassflow"
+                android:background="@drawable/ic_input_icbg"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Assignment"
+                android:textSize="26dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Student_Assignment_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/StuAssignmentToolbar"
+        tools:listitem="@layout/student_assignment_card"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
