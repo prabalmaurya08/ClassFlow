@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="16dp"
-    tools:context=".faculty.FacultySignUp">
+    tools:context=".faculty.facultyLogin.FacultySignUp">
 
     <ImageView
         android:id="@+id/FacultyBackButton"
@@ -49,10 +49,29 @@
         android:hint="Enter Full Name"/>
 
     <TextView
+        android:layout_margin="5dp"
+        android:id="@+id/Faculty_id_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/Faculty_enter_name"
+        android:paddingVertical="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Faculty Id"/>
+    <EditText
+        android:layout_margin="5dp"
+        android:id="@+id/Faculty_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Faculty_id_tv"
+        android:background="@drawable/ic_input_bg"
+        android:hint="Enter Faculty Id"/>
+
+    <TextView
         android:id="@+id/Faculty_Email_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Faculty_enter_name"
+        app:layout_constraintTop_toBottomOf="@id/Faculty_id"
         android:paddingVertical="10dp"
         android:layout_margin="5dp"
         android:textSize="16sp"
