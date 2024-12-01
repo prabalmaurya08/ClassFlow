@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 
 class UserRepository {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -101,12 +102,12 @@ class UserRepository {
 
             "name" to user.name ,
             "email" to user.email,
-          //  "facultyId" to user.facultyId
+              "facultyId" to user.facultyId
 
 
 
 
-            )
+        )
         firestore.collection("facultyProfiles").document(facultyId).set(facultyData)
     }
 
@@ -119,6 +120,42 @@ class UserRepository {
 
             )
         firestore.collection("adminProfiles").document(adminId).set(adminData)
+
+    }
+
+
+
+
+
+//                  FOR LOGIN
+
+    suspend fun login(email: String, password: String): Result<String> {
+        return try {
+            val authResult = auth.signInWithEmailAndPassword(email, password).await()
+            val userId = authResult.user?.uid ?: ""
+
+            Result.success(userId)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+
+    }
+
+    fun getUserRole(userId: String): LiveData<String> {
+        val userRole = MutableLiveData<String>()
+        firestore.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    val role = documentSnapshot.getString("role") ?: ""
+                    userRole.value = role
+                } else {
+                    userRole.postValue("User not found")
+                }
+            }.addOnFailureListener {
+                userRole.value = ""
+            }
+        return userRole
 
     }
 
