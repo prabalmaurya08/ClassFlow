@@ -70,42 +70,27 @@ class FacultyViewModel(application: Application) : AndroidViewModel(application)
             }
     }
 
-    // Allot a class to a faculty member (assign a section and subject)
     fun allotClasses(facultyId: String, section: String, subject: String) {
         val classData = hashMapOf("section" to section, "subject" to subject)
 
         firestore.collection("facultyProfiles").document(facultyId).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    // Check if the "allottedClasses" field exists
-                    val allottedClasses = document.get("allottedClasses") as? List<*>
-                    if (allottedClasses == null) {
-                        // No allotted classes, creating a new field
-                        firestore.collection("facultyProfiles")
-                            .document(facultyId)
-                            .update("allottedClasses", FieldValue.arrayUnion(classData))
-                            .addOnSuccessListener {
-                                _actionStatus.postValue("Class allotted successfully.")
-                                Log.d("FacultyViewModel", "Class allotted successfully for facultyId: $facultyId")
-                            }
-                            .addOnFailureListener { exception ->
-                                _actionStatus.postValue("Failed to allot class: ${exception.message}")
-                                Log.e("FacultyViewModel", "Error allotting class: ${exception.message}")
-                            }
-                    } else {
-                        // Allotted classes field exists, updating it
-                        firestore.collection("facultyProfiles")
-                            .document(facultyId)
-                            .update("allottedClasses", FieldValue.arrayUnion(classData))
-                            .addOnSuccessListener {
-                                _actionStatus.postValue("Class allotted successfully.")
-                                Log.d("FacultyViewModel", "Class allotted successfully for facultyId: $facultyId")
-                            }
-                            .addOnFailureListener { exception ->
-                                _actionStatus.postValue("Failed to allot class: ${exception.message}")
-                                Log.e("FacultyViewModel", "Error allotting class: ${exception.message}")
-                            }
-                    }
+                    // Fetch the allottedClasses list, ensuring it's a List type
+                    val allottedClasses = document.get("allottedClasses") as? List<Map<String, String>> // Assuming it's a list of maps
+
+                    // If allottedClasses exists, add the new classData to it
+                    firestore.collection("facultyProfiles")
+                        .document(facultyId)
+                        .update("allottedClasses", FieldValue.arrayUnion(classData))
+                        .addOnSuccessListener {
+                            _actionStatus.postValue("Class allotted successfully.")
+                            Log.d("FacultyViewModel", "Class allotted successfully for facultyId: $facultyId")
+                        }
+                        .addOnFailureListener { exception ->
+                            _actionStatus.postValue("Failed to allot class: ${exception.message}")
+                            Log.e("FacultyViewModel", "Error allotting class: ${exception.message}")
+                        }
                 } else {
                     // If the document doesn't exist, notify the user
                     _actionStatus.postValue("Faculty not found.")
@@ -117,5 +102,6 @@ class FacultyViewModel(application: Application) : AndroidViewModel(application)
                 Log.e("FacultyViewModel", "Error fetching faculty data: ${exception.message}")
             }
     }
+
 
 }

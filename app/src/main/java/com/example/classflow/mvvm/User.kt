@@ -21,6 +21,6 @@ data class Faculty(
 )
 
 data class AllottedClass(
-    val section: String,
-    val subject: String
+    val section: String="",
+    val subject: String=""
 )
