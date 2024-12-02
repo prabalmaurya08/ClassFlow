@@ -6,49 +6,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".student.studentAssignment.StudentAssignment">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/StuAssignmentToolbar"
+        android:id="@+id/StuAssignmentNavbar"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        >
-        <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp">
-
+            >
             <ImageView
                 android:id="@+id/StuCFlogo"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/logoclassflow"
-                android:background="@drawable/ic_input_icbg"
-
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
-
             <TextView
+                android:id="@+id/StuAssignmentHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:text="Assignment"
-                android:textSize="26dp"
-                android:gravity="center"
+                android:textSize="26sp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:gravity="center"/>
 
 
+        </com.google.android.material.appbar.MaterialToolbar>
+        <!--        top nav bar shadow (jugad)-->
+        <ImageView
+            android:id="@+id/shadowImage"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:src="@drawable/shadow_backgorund"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@id/topnavbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    </androidx.appcompat.widget.Toolbar>
-
+    </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Student_Assignment_recyclerview"
         android:layout_width="match_parent"
@@ -56,7 +64,7 @@
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StuAssignmentToolbar"
+        app:layout_constraintTop_toBottomOf="@id/StuAssignmentNavbar"
         tools:listitem="@layout/student_assignment_card"
         />
 

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+
     app:startDestination="@id/mainLogin">
 
     <!-- Admin Main Screen -->
@@ -125,6 +126,7 @@
         android:label="fragment_student_upload_time_table"
         tools:layout="@layout/fragment_studentupload_time_table" />
     <fragment
+
         android:id="@+id/facultyAttendanceMainScreen"
         android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen"
         android:label="fragment_faculty_attendance_main_screen"
@@ -145,11 +147,23 @@
         android:label="fragment_student_home_page"
         tools:layout="@layout/fragment_student_home_page" />
     <fragment
+
         android:id="@+id/studentAssignment"
         android:name="com.example.classflow.student.studentAssignment.StudentAssignment"
         android:label="fragment_student_assignment"
         tools:layout="@layout/fragment_student_assignment" />
     <fragment
+
+        android:id="@+id/facultyAssigment"
+        android:name="com.example.classflow.faculty.facultyAssignment.facultyAssigment"
+        android:label="fragment_faculty_assigment"
+        tools:layout="@layout/fragment_faculty_assigment" />
+    <fragment
+        android:id="@+id/facultyAssignmentDetail"
+        android:name="com.example.classflow.faculty.facultyAssignment.FacultyAssignmentDetail"
+        android:label="fragment_faculty_assignment_detail"
+        tools:layout="@layout/fragment_faculty_assignment_detail" />
+
         android:id="@+id/studentTimeTable"
         android:name="com.example.classflow.student.studentTimeTable.StudentTimeTable"
         android:label="fragment_student_time_table"
@@ -164,5 +178,6 @@
         android:name="com.example.classflow.splashScreen.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
+
 
 </navigation>

@@ -60,8 +60,8 @@ class AdminFacultyDetailScreen : Fragment() {
 
     private fun setupSpinners() {
         // Example data
-        val sections = listOf("CS41", "CS42", "CS43","CS44")
-        val subjects = listOf("Math", "Science", "English")
+        val sections = listOf("Select Section","CS41", "CS42", "CS43","CS44")//add select section
+        val subjects = listOf("Select Subject","Math", "Science", "English")//add select subject
 
         val sectionAdapter = ArrayAdapter(
             requireContext(),
@@ -83,6 +83,15 @@ class AdminFacultyDetailScreen : Fragment() {
     private fun allotClass() {
         val selectedSection = binding.sectionSpinner.selectedItem.toString()
         val selectedSubject = binding.subjectSpinner.selectedItem.toString()
+
+        //shristi
+
+        if (selectedSection == "Select Section" || selectedSubject == "Select Subject") {
+            Snackbar.make(binding.root, "Please select valid Section and Subject", Snackbar.LENGTH_SHORT).show()
+            return
+        }
+
+//end
 
         viewModel.allotClasses(facultyId, selectedSection, selectedSubject)
     }
