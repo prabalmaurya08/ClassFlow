@@ -98,7 +98,11 @@
         android:id="@+id/facultyMainScreen"
         android:name="com.example.classflow.faculty.FacultyMainScreen"
         android:label="fragment_faculty_main_screen"
-        tools:layout="@layout/fragment_faculty_main_screen" />
+        tools:layout="@layout/fragment_faculty_main_screen" >
+        <action
+            android:id="@+id/action_facultyMainScreen_to_facultyAttendancescreenForAllotedclass"
+            app:destination="@id/facultyAttendancescreenForAllotedclass" />
+    </fragment>
 
     <fragment
         android:id="@+id/studentMainScreen"
@@ -128,7 +132,18 @@
         android:id="@+id/facultyAttendanceMainScreen"
         android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen"
         android:label="fragment_faculty_attendance_main_screen"
-        tools:layout="@layout/fragment_faculty_attendance_main_screen" />
+        tools:layout="@layout/fragment_faculty_attendance_main_screen" >
+        <action
+            android:id="@+id/action_facultyAttendanceMainScreen_to_facultyAttendancescreenForAllotedclass"
+            app:destination="@id/facultyAttendancescreenForAllotedclass" >
+            <argument
+                android:name="section"
+                app:argType="string" />
+            <argument
+                android:name="subject"
+                app:argType="string" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/facultyhomescreen"
         android:name="com.example.classflow.faculty.facultyhome.Facultyhomescreen"
@@ -164,5 +179,17 @@
         android:name="com.example.classflow.splashScreen.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
+    <fragment
+        android:id="@+id/facultyAttendancescreenForAllotedclass"
+        android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendancescreenForAllotedclass"
+        android:label="fragment_faculty_attendancescreen_for_allotedclass"
+        tools:layout="@layout/fragment_faculty_attendancescreen_for_allotedclass" >
+        <argument
+            android:name="section"
+            app:argType="string" />
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

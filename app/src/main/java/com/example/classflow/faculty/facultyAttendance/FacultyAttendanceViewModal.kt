@@ -1,5 +1,6 @@
 package com.example.classflow.faculty.facultyAttendance
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,8 @@ class FacultyAttendanceViewModel : ViewModel() {
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
 
+
+
     suspend fun fetchAllottedClasses(firebaseUid: String) {
         withContext(Dispatchers.IO) {
             try {
@@ -34,10 +37,15 @@ class FacultyAttendanceViewModel : ViewModel() {
                     return@withContext
                 }
 
+                // Log the facultyId for debugging
+                Log.d("FacultyAttendance", "Faculty ID: $facultyId")
+
                 // Fetch allotted classes from facultyProfiles
                 val facultyDoc = firestore.collection("facultyProfiles").document(facultyId).get().await()
                 if (facultyDoc.exists()) {
                     val allottedClasses = facultyDoc.get("allottedClasses") as? List<Map<String, String>>
+                    Log.d("FacultyAttendance", "Allotted Classes: $allottedClasses")
+
                     val classesList = allottedClasses?.map {
                         AllottedClass(section = it["section"] ?: "", subject = it["subject"] ?: "")
                     } ?: emptyList()
@@ -48,7 +56,9 @@ class FacultyAttendanceViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 _errorMessage.postValue("Error fetching allotted classes: ${e.message}")
+                Log.e("FacultyAttendance", "Error fetching data", e)
             }
         }
     }
+
 }
