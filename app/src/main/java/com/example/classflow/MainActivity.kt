@@ -38,7 +38,12 @@ class MainActivity : AppCompatActivity(), StudentLogin.OnStudent, FacultyLogin.O
     }
 
     override fun onStudentLoginSuccess() {
+        findNavController(R.id.fragment).navigate(R.id.action_mainLogin_to_studentMainScreen)
 
+    }
+
+    override fun onAdminLoginClicked() {
+       findNavController(R.id.fragment).navigate(R.id.action_mainLogin_to_adminLogin2)
     }
 
     override fun onFacultySignupClicked() {
@@ -46,6 +51,7 @@ class MainActivity : AppCompatActivity(), StudentLogin.OnStudent, FacultyLogin.O
     }
 
     override fun onFacultyLoginSuccess() {
+        findNavController(R.id.fragment).navigate(R.id.action_mainLogin_to_facultyMainScreen)
 
     }
 }

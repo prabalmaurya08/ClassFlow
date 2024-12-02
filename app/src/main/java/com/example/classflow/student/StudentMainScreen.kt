@@ -24,6 +24,10 @@ class StudentMainScreen : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding=FragmentStudentMainScreenBinding.inflate(layoutInflater)
+
+        viewPager=binding.viewPager
+        bottomNavigationView=binding.studentBottomNav
+
         setupViewPagerWithBottomNavigation()
         return binding.root
     }

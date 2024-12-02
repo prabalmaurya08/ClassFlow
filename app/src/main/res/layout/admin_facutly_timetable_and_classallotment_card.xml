@@ -15,20 +15,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/card"
-        android:padding="10dp">
+        android:padding="20dp">
 <!--        faculty name-->
         <TextView
             android:id="@+id/faculty_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="194dp"
+
+
             android:text="Faculty name "
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:paddingLeft="40dp"
-            app:layout_constraintEnd_toEndOf="parent"
+
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,9 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_marginTop="5dp"
-            android:paddingLeft="20dp"
+
             android:text="Faculty id "
-            android:textColor="@color/beige"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,80 +48,7 @@
             app:layout_constraintTop_toBottomOf="@id/faculty_name"  />
 
 <!--        upload button-->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/upload_time_table_btn"
-            android:focusable="true"
-            app:cardCornerRadius="25dp"
-            app:elevation="8dp"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:clickable="true"
-            android:backgroundTint="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/faculty_id"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/allot_class_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
 
-            android:layout_marginTop="5dp">
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Upload Time Table"
-                    android:textSize="14sp"
-                    android:layout_margin="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textStyle="bold"
-                    android:textColor="@color/bluedark"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-<!--        class allotment button-->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/allot_class_btn"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/white"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="25dp"
-            app:elevation="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/upload_time_table_btn"
-            app:layout_constraintTop_toBottomOf="@id/faculty_id"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Allot class"
-                    android:textColor="@color/bluedark"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

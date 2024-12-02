@@ -3,13 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainLogin">
+    app:startDestination="@id/adminMainScreen">
 
+    <!-- Admin Main Screen -->
+    <fragment
+        android:id="@+id/adminMainScreen"
+        android:name="com.example.classflow.admin.AdminMainScreen"
+        android:label="fragment_admin_main_screen"
+        tools:layout="@layout/fragment_admin_main_screen">
+        <!-- Navigation to Faculty List -->
+        <action
+            android:id="@+id/action_adminMainScreen_to_facultyUploadTimeTableAndClassAllot"
+            app:destination="@id/facultyUploadTimeTableAndClassAllot" />
+        <action
+            android:id="@+id/action_adminMainScreen_to_adminFacultyDetailScreen"
+            app:destination="@id/adminFacultyDetailScreen" />
+    </fragment>
+
+    <!-- Faculty Upload Time Table and Class Allot -->
+    <fragment
+        android:id="@+id/facultyUploadTimeTableAndClassAllot"
+        android:name="com.example.classflow.admin.adminFaculty.FacultyUploadTimeTableAndClassAllot"
+        android:label="fragment_faculty_upload_time_table_and_class_allot"
+        tools:layout="@layout/fragment_faculty_upload_time_table_and_class_allot">
+        <!-- Navigation to Faculty Detail Screen -->
+        <action
+            android:id="@+id/action_facultyUploadTimeTableAndClassAllot_to_adminFacultyDetailScreen"
+            app:destination="@id/adminFacultyDetailScreen">
+            <!-- Arguments for Faculty Detail -->
+            <argument
+                android:name="facultyId"
+                app:argType="string" />
+            <argument
+                android:name="facultyName"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- Faculty Detail Screen -->
+    <fragment
+        android:id="@+id/adminFacultyDetailScreen"
+        android:name="com.example.classflow.admin.adminFaculty.AdminFacultyDetailScreen"
+        android:label="fragment_admin_faculty_detail_screen"
+        tools:layout="@layout/fragment_admin_faculty_detail_screen">
+        <argument
+            android:name="facultyId"
+            app:argType="string" />
+        <argument
+            android:name="facultyName"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Other Fragments -->
     <fragment
         android:id="@+id/mainLogin"
         android:name="com.example.classflow.MainLogin"
         android:label="fragment_main_login"
-        tools:layout="@layout/fragment_main_login" >
+        tools:layout="@layout/fragment_main_login">
         <action
             android:id="@+id/action_mainLogin_to_facultySignUp"
             app:destination="@id/facultySignUp" />
@@ -22,33 +72,60 @@
         <action
             android:id="@+id/action_mainLogin_to_facultyMainScreen"
             app:destination="@id/facultyMainScreen" />
+        <action
+            android:id="@+id/action_mainLogin_to_adminLogin2"
+            app:destination="@id/adminLogin2" />
     </fragment>
-    <fragment
-        android:id="@+id/studentMainScreen"
-        android:name="com.example.classflow.student.StudentMainScreen"
-        android:label="fragment_student_main_screen"
-        tools:layout="@layout/fragment_student_main_screen" />
+
     <fragment
         android:id="@+id/facultySignUp"
         android:name="com.example.classflow.faculty.facultyLogin.FacultySignUp"
         android:label="fragment_faculty_sign_up"
-        tools:layout="@layout/fragment_faculty_sign_up" >
+        tools:layout="@layout/fragment_faculty_sign_up">
         <action
             android:id="@+id/action_facultySignUp_to_mainLogin"
             app:destination="@id/mainLogin" />
     </fragment>
+
     <fragment
         android:id="@+id/studentSignUp"
         android:name="com.example.classflow.student.studentLogin.StudentSignUp"
         android:label="fragment_student_sign_up"
-        tools:layout="@layout/fragment_student_sign_up" >
+        tools:layout="@layout/fragment_student_sign_up">
         <action
             android:id="@+id/action_studentSignUp_to_mainLogin"
             app:destination="@id/mainLogin" />
     </fragment>
+
     <fragment
         android:id="@+id/facultyMainScreen"
         android:name="com.example.classflow.faculty.FacultyMainScreen"
         android:label="fragment_faculty_main_screen"
         tools:layout="@layout/fragment_faculty_main_screen" />
+
+    <fragment
+        android:id="@+id/studentMainScreen"
+        android:name="com.example.classflow.student.StudentMainScreen"
+        android:label="fragment_student_main_screen"
+        tools:layout="@layout/fragment_student_main_screen" />
+
+    <fragment
+        android:id="@+id/adminLogin2"
+        android:name="com.example.classflow.admin.adminLogin.AdminLogin"
+        android:label="fragment_admin_login"
+        tools:layout="@layout/fragment_admin_login">
+        <action
+            android:id="@+id/action_adminLogin2_to_mainLogin"
+            app:destination="@id/mainLogin" />
+        <action
+            android:id="@+id/action_adminLogin2_to_adminMainScreen"
+            app:destination="@id/adminMainScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/studentUploadTimeTable"
+        android:name="com.example.classflow.admin.adminStudent.StudentUploadTimeTable"
+        android:label="fragment_student_upload_time_table"
+        tools:layout="@layout/fragment_studentupload_time_table" />
+
 </navigation>
