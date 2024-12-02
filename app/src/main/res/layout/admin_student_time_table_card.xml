@@ -31,7 +31,7 @@
             />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/job_detail_button"
+            android:id="@+id/upload_time_table_btn"
             android:focusable="true"
             app:cardCornerRadius="25dp"
             app:elevation="8dp"
