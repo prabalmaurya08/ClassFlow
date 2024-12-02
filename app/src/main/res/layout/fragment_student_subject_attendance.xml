@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".student.studentAttendance.StudentAttendance">
+    tools:context=".student.studentAttendance.StudentSubjectAttendance">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -15,13 +14,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Attendance"
-            app:navigationIcon="@drawable/logoclassflow"
-            app:titleTextColor="@color/bluedark"
-            app:titleCentered="true">
+            android:id="@+id/section_name"
+            app:navigationIcon="@drawable/arrow_left"
+            app:title="CS-44"
+            app:titleCentered="true"
+            app:titleTextColor="@color/bluedark">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -36,15 +37,43 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
+
     </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/total_attedance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total attendance: 23/50"
+        android:textColor="@color/green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topnavbar" />
+
+    <TextView
+        android:id="@+id/total_percentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total percentage: 70%"
+        android:textColor="@color/green"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_attedance" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/student_subjectname_card"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/recylerview"
+        app:layout_constraintTop_toBottomOf="@id/total_percentage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topnavbar"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

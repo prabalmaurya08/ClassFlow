@@ -9,9 +9,7 @@ import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScre
 import com.example.classflow.faculty.facultyhome.Facultyhomescreen
 import com.example.classflow.faculty.facultytimetable.Facultytimetable
 
-class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager,
-                                        lifecycle: Lifecycle
-) : FragmentStateAdapter(fragmentManager, lifecycle) {
+class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         // Number of fragments for ViewPager2
         return 3
