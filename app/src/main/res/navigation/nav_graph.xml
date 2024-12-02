@@ -164,5 +164,25 @@
         android:name="com.example.classflow.splashScreen.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
+    <fragment
+        android:id="@+id/facultyAttendancescreenForAllotedclass"
+        android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendancescreenForAllotedclass"
+        android:label="fragment_faculty_attendancescreen_for_allotedclass"
+        tools:layout="@layout/fragment_faculty_attendancescreen_for_allotedclass" />
+    <fragment
+        android:id="@+id/facultyLogin"
+        android:name="com.example.classflow.faculty.facultyLogin.FacultyLogin"
+        android:label="fragment_faculty_login"
+        tools:layout="@layout/fragment_faculty_login" />
+    <fragment
+        android:id="@+id/studentLogin"
+        android:name="com.example.classflow.student.studentLogin.StudentLogin"
+        android:label="fragment_student_login"
+        tools:layout="@layout/fragment_student_login" />
+    <fragment
+        android:id="@+id/studentSubjectAttendance"
+        android:name="com.example.classflow.student.studentAttendance.StudentSubjectAttendance"
+        android:label="fragment_student_subject_attendance"
+        tools:layout="@layout/fragment_student_subject_attendance" />
 
 </navigation>

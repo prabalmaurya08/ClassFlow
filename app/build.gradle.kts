@@ -63,5 +63,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx.v260)
     implementation (libs.androidx.navigation.ui.ktx.v260)
 
+    //for chart
+    implementation(libs.mpandroidchart)
 
 }

@@ -9,9 +9,7 @@ import com.example.classflow.admin.adminStudent.StudentUploadTimeTable
 import com.example.classflow.faculty.facultyLogin.FacultyLogin
 
 
-class AdminMainScreenViewPagerAdaptor (fragmentManager: FragmentManager,
-                                       lifecycle: Lifecycle
-) : FragmentStateAdapter(fragmentManager, lifecycle) {
+class AdminMainScreenViewPagerAdaptor (fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         // Number of fragments for ViewPager2
        return 2
