@@ -12,58 +12,66 @@ class UserRepository {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+
+
     fun signUpUser(user: User): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
         auth.createUserWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-
-
-
-
-                    //this will create a unique id for the user
                     val userId = auth.currentUser?.uid ?: ""
-                    val userData = hashMapOf(
-                        "email" to user.email,
-                        "name" to user.name,
-                        "role" to user.role,
 
+                    // Validate that the FacultyId is unique if the role is 'faculty'
+                    if (user.role == "faculty") {
+                        validateFacultyId(user.facultyId) { isValid ->
+                            if (isValid) {
+                                val userData = hashMapOf(
+                                    "email" to user.email,
+                                    "name" to user.name,
+                                    "role" to user.role,
+                                    "facultyId" to user.facultyId // Save FacultyId
+                                )
 
-
-
-                        )
-
-                    //now store this data in the firestore so that we can easily retrieve it
-
-                    firestore.collection("users").document(userId).set(userData)
-                        .addOnSuccessListener {
-                            when (user.role) {
-                                "faculty" -> {
-                                    saveFacultyProfile(userId,user)
-                                }
-                                "student" -> {
-                                    saveStudentProfile(userId,user)
-
-                                }
-                                else -> {
-                                    saveAdminProfile(userId,user)
-                                }
+                                // Save user data in the 'users' collection
+                                firestore.collection("users").document(userId).set(userData)
+                                    .addOnSuccessListener {
+                                        saveFacultyProfile(user.facultyId, user)
+                                        result.postValue(true)
+                                    }
+                                    .addOnFailureListener {
+                                        result.postValue(false)
+                                    }
+                            } else {
+                                Log.e("UserRepository", "FacultyId already exists or is invalid.")
+                                result.postValue(false)
                             }
-
-                            result.postValue(true)
                         }
-                        .addOnFailureListener {
-                            result.postValue(false)
-
-                        }
-                }
-                else{
+                    } else {
+                        // For students and admins, save directly
+                        val userData = hashMapOf(
+                            "email" to user.email,
+                            "name" to user.name,
+                            "role" to user.role
+                        )
+                        firestore.collection("users").document(userId).set(userData)
+                            .addOnSuccessListener {
+                                when (user.role) {
+                                    "student" -> saveStudentProfile(userId, user)
+                                    else -> saveAdminProfile(userId, user)
+                                }
+                                result.postValue(true)
+                            }
+                            .addOnFailureListener {
+                                result.postValue(false)
+                            }
+                    }
+                } else {
                     result.postValue(false)
                 }
             }
         return result
-
     }
+
 
     private fun saveStudentProfile(studentId: String,user: User){
         val studentData = hashMapOf(
@@ -103,14 +111,14 @@ class UserRepository {
 
             "name" to user.name ,
             "email" to user.email,
-              "facultyId" to user.facultyId
+              "facultyId" to userId
 
 
 
 
         )
         firestore.collection("facultyProfiles")
-            .document(user.facultyId) // Using facultyId as the document ID
+            .document(userId) // Using facultyId as the document ID
             .set(facultyData)
             .addOnSuccessListener {
                 Log.d("FacultyViewModel", "Faculty profile saved successfully.")
@@ -131,6 +139,25 @@ class UserRepository {
         firestore.collection("adminProfiles").document(adminId).set(adminData)
 
     }
+
+
+    private fun validateFacultyId(facultyId: String, callback: (Boolean) -> Unit) {
+        firestore.collection("facultyProfiles").document(facultyId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot.exists()) {
+                    // FacultyId already exists
+                    callback(false)
+                } else {
+                    // FacultyId is valid
+                    callback(true)
+                }
+            }
+            .addOnFailureListener {
+                callback(false)
+            }
+    }
+
 
 
 
@@ -170,3 +197,73 @@ class UserRepository {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    fun signUpUser(user: User): LiveData<Boolean> {
+//        val result = MutableLiveData<Boolean>()
+//        auth.createUserWithEmailAndPassword(user.email, user.password)
+//            .addOnCompleteListener {
+//                if (it.isSuccessful) {
+//
+//
+//
+//
+//                    //this will create a unique id for the user
+//                    val userId = auth.currentUser?.uid ?: ""
+//                    val userData = hashMapOf(
+//                        "email" to user.email,
+//                        "name" to user.name,
+//                        "role" to user.role,
+//
+//
+//
+//
+//                        )
+//
+//                    //now store this data in the firestore so that we can easily retrieve it
+//
+//                    firestore.collection("users").document(userId).set(userData)
+//                        .addOnSuccessListener {
+//                            when (user.role) {
+//                                "faculty" -> {
+//                                    saveFacultyProfile(userId,user)
+//                                }
+//                                "student" -> {
+//                                    saveStudentProfile(userId,user)
+//
+//                                }
+//                                else -> {
+//                                    saveAdminProfile(userId,user)
+//                                }
+//                            }
+//
+//                            result.postValue(true)
+//                        }
+//                        .addOnFailureListener {
+//                            result.postValue(false)
+//
+//                        }
+//                }
+//                else{
+//                    result.postValue(false)
+//                }
+//            }
+//        return result
+//
+//    }

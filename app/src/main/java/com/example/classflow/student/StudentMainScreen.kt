@@ -41,7 +41,7 @@ class StudentMainScreen : Fragment() {
         })
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.bottom_nav_dashboard -> viewPager.currentItem = 0
+                R.id.bottom_nav_homePage -> viewPager.currentItem = 0
                 R.id.bottom_nav_timeTable -> viewPager.currentItem = 1
                 R.id.bottom_nav_attendance -> viewPager.currentItem = 2
                 R.id.bottom_nav_assignment -> viewPager.currentItem = 3
