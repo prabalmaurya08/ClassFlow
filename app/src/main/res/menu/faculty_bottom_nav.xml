@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/bottom_nav_dashboard"
+    <item android:id="@+id/bottom_nav_homePage"
         android:title="Home"
         android:icon="@drawable/dashbord_icon"/>
-    <item android:id="@+id/bottom_nav_appointment"
+    <item android:id="@+id/bottom_nav_timeTable"
         android:title="TimeTable"
         android:icon="@drawable/dashbord_icon"/>
-    <item android:id="@+id/bottom_nav_chats"
+    <item android:id="@+id/bottom_nav_attendance"
         android:title="Attendence"
         android:icon="@drawable/dashbord_icon"/>
-    <item android:id="@+id/bottom_nav_profile"
+    <item android:id="@+id/bottom_nav_assignment"
         android:title="Assignment"
         android:icon="@drawable/dashbord_icon"/>
 </menu>

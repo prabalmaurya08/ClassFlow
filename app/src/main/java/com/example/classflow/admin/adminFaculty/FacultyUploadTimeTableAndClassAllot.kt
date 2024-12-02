@@ -73,6 +73,9 @@ class FacultyUploadTimeTableAndClassAllot : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = facultyAdapter
     }
+
+
+
     private fun observeFacultyList() {
         viewModel.facultyList.observe(viewLifecycleOwner, Observer { facultyList ->
             facultyAdapter.submitList(facultyList)
