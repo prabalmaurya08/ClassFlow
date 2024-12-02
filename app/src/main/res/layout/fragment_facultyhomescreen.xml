@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".admin.adminStudent.StudentUploadTimeTable">
+    tools:context=".admin.adminFaculty.FacultyUploadTimeTableAndClassAllot">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -15,13 +16,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Sections"
             app:navigationIcon="@drawable/logoclassflow"
-            app:titleTextColor="@color/bluedark"
-            app:titleCentered="true">
+            app:title="Home"
+            app:titleCentered="true"
+            app:titleTextColor="@color/bluedark">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -36,16 +38,40 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ImageView
+        android:id="@+id/bbdu_image"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:src="@drawable/college_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topnavbar" />
+
+    <TextView
+        android:id="@+id/university_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:text="BABU BANARSI DAS UNIVERSITY"
+        android:textColor="@color/bluedark"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topnavbar"
-        tools:listitem="@layout/admin_student_time_table_card"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bbdu_image" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/university_name"
+        tools:listitem="@layout/faculty_class_and_subject_card"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
