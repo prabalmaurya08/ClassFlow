@@ -170,7 +170,7 @@
     <fragment
 
         android:id="@+id/facultyAssigment"
-        android:name="com.example.classflow.faculty.facultyAssignment.facultyAssigment"
+        android:name="com.example.classflow.faculty.facultyAssignment.FacultyAssignment"
         android:label="fragment_faculty_assigment"
         tools:layout="@layout/fragment_faculty_assigment" />
     <fragment
@@ -178,7 +178,7 @@
         android:name="com.example.classflow.faculty.facultyAssignment.FacultyAssignmentDetail"
         android:label="fragment_faculty_assignment_detail"
         tools:layout="@layout/fragment_faculty_assignment_detail" />
-
+    <fragment
         android:id="@+id/studentTimeTable"
         android:name="com.example.classflow.student.studentTimeTable.StudentTimeTable"
         android:label="fragment_student_time_table"
