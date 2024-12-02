@@ -2,6 +2,7 @@ package com.example.classflow.student
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.classflow.student.studentAssignment.StudentAssignment
 import com.example.classflow.student.studentAttendance.StudentAttendance
 import com.example.classflow.student.studentHomePage.StudentHomePage
 import com.example.classflow.student.studentTimeTable.StudentTimeTable
