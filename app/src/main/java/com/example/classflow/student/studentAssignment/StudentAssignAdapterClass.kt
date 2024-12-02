@@ -15,8 +15,8 @@ class StudentAssignAdapterClass(
         fun bind(data: StudentAssignmentDataClass) {
             // Binding data to the views
             binding.StuAssignmentSubject.text = data.stuAssignSub
-            binding.StuAssignedDate.text = data.stuAssignDate
-            binding.StuDeadline.text = data.stuAssignDeadline
+            binding.StuAssignSubjectTeacher.text = data.stuAssignSubTeacher
+
         }
     }
 
