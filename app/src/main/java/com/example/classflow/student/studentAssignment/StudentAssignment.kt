@@ -25,13 +25,12 @@ class StudentAssignment : Fragment() {
 
     private fun setupCard() {
         val cardItem = listOf(
-            StudentAssignmentDataClass(stuAssignSub ="Automata Assignment", stuAssignDate = "Assigned On: 1 December 2024", stuAssignDeadline = "Submit By: 5 December 2024"),
-            StudentAssignmentDataClass(stuAssignSub ="Automata Assignment", stuAssignDate = "Assigned On: 1 December 2024", stuAssignDeadline = "Submit By: 5 December 2024"),
-            StudentAssignmentDataClass(stuAssignSub ="Automata Assignment", stuAssignDate = "Assigned On: 1 December 2024", stuAssignDeadline = "Submit By: 5 December 2024"),
-            StudentAssignmentDataClass(stuAssignSub ="Automata Assignment", stuAssignDate = "Assigned On: 1 December 2024", stuAssignDeadline = "Submit By: 5 December 2024"),
-            StudentAssignmentDataClass(stuAssignSub ="Automata Assignment", stuAssignDate = "Assigned On: 1 December 2024", stuAssignDeadline = "Submit By: 5 December 2024"),
-
-
+            StudentAssignmentDataClass(stuAssignSub ="Compiler Design", stuAssignSubTeacher = "Upasana Dugal"),
+            StudentAssignmentDataClass(stuAssignSub ="Automata ", stuAssignSubTeacher = "Ramesh Sharma"),
+            StudentAssignmentDataClass(stuAssignSub ="Graphics", stuAssignSubTeacher = "Dimple Singh"),
+            StudentAssignmentDataClass(stuAssignSub ="Java",stuAssignSubTeacher = "Riya Dwivedi"),
+            StudentAssignmentDataClass(stuAssignSub ="Python", stuAssignSubTeacher = "Sandeep Dixit"),
+            StudentAssignmentDataClass(stuAssignSub ="Mathematics", stuAssignSubTeacher = "Ruchi Mehra"),
             )
         adapterClass = StudentAssignAdapterClass(cardItem)
         binding.StudentAssignmentRecyclerview.apply {

@@ -1,72 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginHorizontal="16dp"
+
 
     tools:context=".admin.adminFaculty.AdminFacultyDetailScreen">
-    <TextView
-        android:id="@+id/faculty"
+
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Faculty Details"
-        android:layout_marginTop="50dp"
-        android:textSize="22sp" />
+        android:id="@+id/admin_faculty_detail_navbar"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/facultyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Faculty Name"
-        android:layout_marginTop="50dp"
-        android:textSize="18sp" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/backward_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/backward_button_left"
 
-    <TextView
-        android:id="@+id/facultyId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Faculty ID"
-        android:textSize="16sp" />
+                />
+            <TextView
+                android:id="@+id/faculty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Faculty Details"
+                android:textStyle="bold"
+                android:textSize="22sp" />
 
-    <!-- Timetable Upload -->
-    <Button
-        android:id="@+id/uploadTimetableButton"
+
+        </com.google.android.material.appbar.MaterialToolbar>
+        <!--        top nav bar shadow (jugad)-->
+        <ImageView
+            android:id="@+id/shadowImage"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:src="@drawable/shadow_backgorund"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@id/topnavbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/upload_tt_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upload Timetable" />
+        app:cardBackgroundColor="@color/white"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/admin_faculty_detail_navbar">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/facultyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faculty Name"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/facultyId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faculty ID"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="10dp"
+                app:layout_constraintTop_toBottomOf="@id/facultyName"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <!--Timetable Upload-->
+            <Button
+                android:id="@+id/uploadTimetableButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/bluedark"
+                android:text="Upload Timetable"
+                android:layout_margin="10dp"
+                app:layout_constraintTop_toBottomOf="@id/facultyId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/admin_allot_class_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/upload_tt_card"
+        app:layout_constraintStart_toStartOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/allot_class_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Allot Class"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <Spinner
+                android:id="@+id/sectionSpinner"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:background="@drawable/section_spinner"
+                android:layout_margin="10dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toStartOf="@id/subjectSpinner"
+                app:layout_constraintTop_toBottomOf="@id/allot_class_heading"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+            <Spinner
+                android:id="@+id/subjectSpinner"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/section_spinner"
+                android:layout_height="48dp"
+                android:gravity="end"
+                android:layout_margin="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                app:layout_constraintStart_toEndOf="@id/sectionSpinner"
+                app:layout_constraintTop_toBottomOf="@id/allot_class_heading"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <!--Allot Class Section-->
+
+            <Button
+                android:id="@+id/allotClassesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Allot Class"
+                app:layout_constraintTop_toBottomOf="@id/subjectSpinner"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="@color/bluedark"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+    <!--
+
+
+
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Spinner
-            android:id="@+id/sectionSpinner"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/section_spinner"
-            android:layout_marginHorizontal="5dp"
-            android:layout_height="48dp" />
 
-        <Spinner
-            android:id="@+id/subjectSpinner"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            android:background="@drawable/section_spinner"
-            android:layout_height="48dp" />
+
+
     </LinearLayout>
 
-    <!-- Allot Class Section -->
 
 
-    <Button
-        android:id="@+id/allotClassesButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Allot Class" />
 
-</LinearLayout>
+   -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
