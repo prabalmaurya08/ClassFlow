@@ -1,6 +1,5 @@
+
 package com.example.classflow.admin.adminFaculty
-
-
 import android.content.Context
 import android.os.Bundle
 
@@ -14,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.classflow.admin.adminFaculty.AdminFacultyListAdapter
 
 
 import com.example.classflow.databinding.FragmentFacultyUploadTimeTableAndClassAllotBinding
@@ -37,14 +37,14 @@ class FacultyUploadTimeTableAndClassAllot : Fragment() {
         fun onFacultyClicked(facultyId: String, facultyName: String)
     }
 
-        override fun onAttach(context: Context) {
-            super.onAttach(context)
-            if (parentFragment is OnFacultyClickListener) {
-                listener = parentFragment as OnFacultyClickListener
-            } else {
-                throw RuntimeException("Parent fragment must implement OnFacultyClickListener")
-            }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (parentFragment is OnFacultyClickListener) {
+            listener = parentFragment as OnFacultyClickListener
+        } else {
+            throw RuntimeException("Parent fragment must implement OnFacultyClickListener")
         }
+    }
 
 
     override fun onCreateView(
@@ -63,7 +63,7 @@ class FacultyUploadTimeTableAndClassAllot : Fragment() {
     private fun setupRecyclerView() {
         facultyAdapter = AdminFacultyListAdapter {
 
-            faculty ->
+                faculty ->
             // Trigger listener when faculty is clicked
             listener?.onFacultyClicked(faculty.facultyId, faculty.name)
 
@@ -85,10 +85,4 @@ class FacultyUploadTimeTableAndClassAllot : Fragment() {
             Toast.makeText(requireContext(), statusMessage, Toast.LENGTH_SHORT).show()
         })
     }
-
-
-
 }
-
-
-

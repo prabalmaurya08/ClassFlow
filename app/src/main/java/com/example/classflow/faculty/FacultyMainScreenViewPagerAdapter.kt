@@ -4,7 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.classflow.faculty.facultyAssignment.FacultyAssignment
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen
+import com.example.classflow.faculty.facultyLogin.FacultySignUp
 
 import com.example.classflow.faculty.facultyhome.Facultyhomescreen
 import com.example.classflow.faculty.facultytimetable.Facultytimetable
@@ -21,7 +23,7 @@ class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecy
             0 -> Facultyhomescreen()
             1 -> Facultytimetable()
             2-> FacultyAttendanceMainScreen()
-         //   3-> FacultyAssignment()
+         3-> FacultyAssignment()
 
             else -> throw IllegalStateException("Unexcepted position: $position")
         }
