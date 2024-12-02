@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/bottom_nav_homePage"
         android:title="Home"
-        android:icon="@drawable/dashbord_icon"/>
+        android:icon="@drawable/home_icon"/>
+
     <item android:id="@+id/bottom_nav_timeTable"
         android:title="TimeTable"
-        android:icon="@drawable/dashbord_icon"/>
+        android:icon="@drawable/calender"/>
+
     <item android:id="@+id/bottom_nav_attendance"
         android:title="Attendence"
-        android:icon="@drawable/dashbord_icon"/>
+        android:icon="@drawable/attendance_icon"/>
+
     <item android:id="@+id/bottom_nav_assignment"
         android:title="Assignment"
-        android:icon="@drawable/dashbord_icon"/>
+        android:icon="@drawable/assignment_icon"/>
 </menu>
