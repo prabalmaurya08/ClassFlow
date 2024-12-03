@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.classflow.R
+import com.example.classflow.admin.AdminMainScreenViewPagerAdaptor
 import com.example.classflow.databinding.FragmentStudentMainScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -33,6 +34,10 @@ class StudentMainScreen : Fragment() {
     }
 
     private fun setupViewPagerWithBottomNavigation() {
+        // Set up the ViewPager adapter
+        val adapter = StudentMainScreenViewPagerAdapter(childFragmentManager, lifecycle) // Define your own adapter
+        viewPager.adapter = adapter
+
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)

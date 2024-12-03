@@ -1,11 +1,18 @@
 package com.example.classflow.faculty
 
+import android.app.DownloadManager
+import android.content.Context
+import android.content.Context.*
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.classflow.R
@@ -14,6 +21,7 @@ import com.example.classflow.databinding.FragmentFacultyMainScreenBinding
 
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreenDirections
+import com.example.classflow.faculty.facultytimetable.FacultyTimeTable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

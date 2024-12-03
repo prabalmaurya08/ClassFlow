@@ -6,10 +6,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.classflow.faculty.facultyAssignment.FacultyAssignment
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen
-import com.example.classflow.faculty.facultyLogin.FacultySignUp
 
-import com.example.classflow.faculty.facultyhome.Facultyhomescreen
-import com.example.classflow.faculty.facultytimetable.Facultytimetable
+import com.example.classflow.faculty.facultyhome.FacultyHomeScreen
+import com.example.classflow.faculty.facultytimetable.FacultyTimeTable
 
 class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
@@ -20,8 +19,8 @@ class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecy
     override fun createFragment(position: Int): Fragment {
         // Return the appropriate fragment for each position
         return when (position){
-            0 -> Facultyhomescreen()
-            1 -> Facultytimetable()
+            0 -> FacultyHomeScreen()
+            1 -> FacultyTimeTable()
             2-> FacultyAttendanceMainScreen()
          3-> FacultyAssignment()
 

@@ -148,12 +148,12 @@
     </fragment>
     <fragment
         android:id="@+id/facultyhomescreen"
-        android:name="com.example.classflow.faculty.facultyhome.Facultyhomescreen"
+        android:name="com.example.classflow.faculty.facultyhome.FacultyHomeScreen"
         android:label="fragment_facultyhomescreen"
         tools:layout="@layout/fragment_facultyhomescreen" />
     <fragment
         android:id="@+id/facultytimetable"
-        android:name="com.example.classflow.faculty.facultytimetable.Facultytimetable"
+        android:name="com.example.classflow.faculty.facultytimetable.FacultyTimeTable"
         android:label="fragment_facultytimetable"
         tools:layout="@layout/fragment_facultytimetable" />
     <fragment

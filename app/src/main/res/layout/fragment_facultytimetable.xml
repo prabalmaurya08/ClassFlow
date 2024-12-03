@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".faculty.facultytimetable.Facultytimetable">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".faculty.facultytimetable.FacultyTimeTable">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/topnavbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <!-- MaterialToolbar -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/logoclassflow"
+            app:title="My TimeTable"
+            app:titleCentered="true"
+            app:titleTextColor="@color/bluedark" />
+
+        <!-- Shadow ImageView -->
+        <ImageView
+            android:id="@+id/shadowImage"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shadow_backgorund"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topnavbar" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Download PDF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topnavbar" />
+
+
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_marginTop="50dp"
+        android:text="View Pdf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/downloadButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
