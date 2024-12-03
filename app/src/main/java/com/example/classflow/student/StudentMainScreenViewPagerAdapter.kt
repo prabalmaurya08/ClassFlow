@@ -1,5 +1,6 @@
 package com.example.classflow.student
 
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -7,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.classflow.student.studentAssignment.StudentAssignment
 import com.example.classflow.student.studentAttendance.StudentAttendance
 import com.example.classflow.student.studentHomePage.StudentHomePage
+
 import com.example.classflow.student.studentTimeTable.StudentTimeTable
 
 class StudentMainScreenViewPagerAdapter(fragmentmanager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentmanager ,lifecycle) {
