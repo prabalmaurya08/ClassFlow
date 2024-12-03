@@ -1,19 +1,23 @@
 package com.example.classflow.faculty
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.classflow.R
-import com.example.classflow.admin.AdminMainScreenViewPagerAdaptor
-import com.example.classflow.databinding.FragmentAdminMainScreenBinding
+
 import com.example.classflow.databinding.FragmentFacultyMainScreenBinding
+
+import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen
+import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreenDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class FacultyMainScreen : Fragment() {
+class FacultyMainScreen : Fragment() , FacultyAttendanceMainScreen.OnClassClickListener {
 
     private var _binding: FragmentFacultyMainScreenBinding? = null
     private val binding get() = _binding!!
@@ -55,6 +59,17 @@ class FacultyMainScreen : Fragment() {
 
             }
             true
+        }
+    }
+
+    override fun onClassClicked(section: String, subject: String) {
+        try {
+            // Navigate to Faculty Detail Screen
+            val action = FacultyMainScreenDirections
+                .actionFacultyMainScreenToFacultyAttendancescreenForAllotedclass(section, subject)
+            findNavController().navigate(action)
+        } catch (e: Exception) {
+            Log.e("AdminMainScreen", "Navigation failed: ${e.message}")
         }
     }
 

@@ -19,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Attendance"
+            app:titleTextAppearance="@style/student_BoldToolbarTitle"
             app:navigationIcon="@drawable/logoclassflow"
-            app:titleTextColor="@color/bluedark"
+            app:titleTextColor="@color/green_bright"
             app:titleCentered="true">
 
         </com.google.android.material.appbar.MaterialToolbar>

@@ -9,40 +9,21 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/FacultyAssignmentDetailNavbar"
+        android:id="@+id/topnavbar"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        >
-        <ImageView
-            android:id="@+id/FacultyCFlogo"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/logoclassflow"
 
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginStart="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/FacultyAssignmentDetailHeading"
+        <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assignment"
-            android:textSize="26sp"
-            android:layout_marginEnd="70dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
+            app:title="Assignment"
+            app:titleTextAppearance="@style/student_BoldToolbarTitle"
+            app:navigationIcon="@drawable/backward_button_left"
+            app:titleTextColor="#3367D5"
+            app:titleCentered="true">
 
     </com.google.android.material.appbar.MaterialToolbar>
     <!--        top nav bar shadow (jugad)-->
@@ -65,7 +46,7 @@
 
         android:layout_margin="10dp"
        
-        app:layout_constraintTop_toBottomOf="@+id/FacultyAssignmentDetailNavbar">
+        app:layout_constraintTop_toBottomOf="@+id/topnavbar">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

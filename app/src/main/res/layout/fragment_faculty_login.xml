@@ -55,15 +55,28 @@
         android:textStyle="bold"
         android:textColor="@color/blue"
         android:text="Signup"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/faculty_btn_card_gradient_color"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/goToSignUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <Button
         android:id="@+id/facultyLoginButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:text="Login"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/goToSignUp"
-        android:layout_marginVertical="20dp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/blue"
-        android:text="Login"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

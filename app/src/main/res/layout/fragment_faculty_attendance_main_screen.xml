@@ -22,8 +22,9 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/logoclassflow"
             app:title="Attendance"
+            app:titleTextAppearance="@style/student_BoldToolbarTitle"
             app:titleCentered="true"
-            app:titleTextColor="@color/bluedark">
+            app:titleTextColor="@color/blue">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -55,10 +56,8 @@
         app:layout_constraintTop_toBottomOf="@+id/topnavbar" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:id="@+id/recyclerView"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topnavbar"
