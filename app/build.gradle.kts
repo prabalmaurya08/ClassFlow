@@ -66,4 +66,8 @@ dependencies {
     //for chart
     implementation(libs.mpandroidchart)
 
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.kotlinx.coroutines.play.services)
+
+
 }

@@ -195,7 +195,7 @@
         tools:layout="@layout/fragment_splash_screen" />
     <fragment
         android:id="@+id/facultyAttendancescreenForAllotedclass"
-        android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendancescreenForAllotedclass"
+        android:name="com.example.classflow.faculty.facultyAttendance.facultyMarkAttendance.FacultyAttendanceScreenForAllottedClass"
         android:label="fragment_faculty_attendancescreen_for_allotedclass"
         tools:layout="@layout/fragment_faculty_attendancescreen_for_allotedclass" >
         <argument

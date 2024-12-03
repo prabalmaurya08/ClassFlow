@@ -15,7 +15,7 @@
 
 
         <TextView
-            android:id="@+id/tvStudentRollno"
+            android:id="@+id/StudentRollno"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -23,7 +23,7 @@
             android:textSize="16sp" />
         <!-- Student Info -->
         <TextView
-            android:id="@+id/tvStudentInfo"
+            android:id="@+id/StudentName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,20 +31,26 @@
             android:textSize="16sp" />
 
 
+<RadioGroup
+    android:id="@+id/radioGroup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <RadioButton
+        android:id="@+id/rbPresent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Present" />
 
+    <!-- Absent Radio Button -->
+    <RadioButton
+        android:id="@+id/rbAbsent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Absent" />
+</RadioGroup>
         <!-- Present Radio Button -->
-        <RadioButton
-            android:id="@+id/rbPresent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Present" />
 
-        <!-- Absent Radio Button -->
-        <RadioButton
-            android:id="@+id/rbAbsent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Absent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

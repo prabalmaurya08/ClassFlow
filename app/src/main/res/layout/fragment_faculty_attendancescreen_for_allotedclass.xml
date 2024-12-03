@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".faculty.facultyAttendance.FacultyAttendancescreenForAllotedclass">
+    tools:context=".faculty.facultyAttendance.facultyMarkAttendance.FacultyAttendanceScreenForAllottedClass">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -42,13 +42,15 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/calender_card"
+
         android:focusable="true"
         app:cardCornerRadius="25dp"
         app:elevation="8dp"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:clickable="true"
+        android:id="@+id/datePicker"
+
         android:layout_marginTop="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -59,8 +61,10 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="48dp"
+
             android:padding="10dp">
 
             <TextView
@@ -89,14 +93,14 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/calender_card"
+        app:layout_constraintTop_toBottomOf="@id/datePicker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/recylerview"
-        tools:listitem="@layout/faculty_studentlist_card"
+        tools:listitem="@layout/faculty_attendance_studentlist_card"
         app:layout_constraintTop_toBottomOf="@id/show_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
