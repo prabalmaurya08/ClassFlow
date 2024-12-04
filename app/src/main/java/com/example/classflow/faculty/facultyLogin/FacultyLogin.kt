@@ -23,7 +23,7 @@ class FacultyLogin : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     // Using LoginViewModel which is on StudentViewModel
-    private lateinit var loginViewModel: StudentViewModel
+    private lateinit var loginViewModel: FacultyLoginViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -59,7 +59,7 @@ class FacultyLogin : Fragment() {
     }
 
     private fun facultyLogin() {
-        loginViewModel = ViewModelProvider(this)[StudentViewModel::class.java]
+        loginViewModel = ViewModelProvider(this)[FacultyLoginViewModel::class.java]
 
         binding.facultyLoginButton.setOnClickListener {
             val email = binding.facultyLoginEmailAddress.text.toString().trim()
