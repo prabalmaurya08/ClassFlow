@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".student.studentAssignment.DetailScreen.StudentAssignmentDetailScreen">
+    tools:context=".student.studentAssignment.detailScreen.StudentAssignmentDetailScreen">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -48,111 +48,46 @@
         app:layout_constraintTop_toBottomOf="@id/topnavbar">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             >
 
             <ImageView
+                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:padding="10dp"
                 android:foreground="@drawable/classroom_bg"
+                android:padding="10dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
                 android:id="@+id/StuAssignmentSubject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Compiler Design"
-                android:textStyle="bold"
-                android:layout_margin="10dp"
-                android:textSize="30sp"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-            <TextView
-                android:id="@+id/StuAssignedDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ms. Upasana Dugal"
-                android:paddingBottom="10dp"
-                android:layout_margin="10dp"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="@color/beige"
-                app:layout_constraintTop_toBottomOf="@+id/StuAssignmentSubject"
-                />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
       </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/CardAssignment_Given"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-
-        app:layout_constraintTop_toBottomOf="@+id/AssignmentDetail_CardStu">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/StuCardAssignmentTeacherName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upasana Dugal"
-            android:textSize="22sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
-
-
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints" />
-        <TextView
-            android:id="@+id/CardAssignment_Student_Upload_Date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Uploaded On-2 December,2024"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/StuCardAssignmentTeacherName"
-            android:textSize="16sp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/CardAssignment_Student_DeadLineDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Submit By- 14 December,2024"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/CardAssignment_Student_Upload_Date"
-            android:textSize="16sp"
-            android:textColor="@color/black"/>
-
-
-        <TextView
-            android:id="@+id/Student_Assign_pdf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/CardAssignment_Student_DeadLineDate"
-            android:text="pdf-compiler Assignment"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-
-            android:background="@drawable/ic_input_bg"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/AssignmentDetail_RecyclerView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="20dp"
+    app:layout_constraintTop_toBottomOf="@id/AssignmentDetail_CardStu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

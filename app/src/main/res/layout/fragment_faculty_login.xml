@@ -20,6 +20,7 @@
         android:id="@+id/faculty_LoginEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         app:layout_constraintTop_toBottomOf="@id/faculty_Email_id"
         android:background="@drawable/ic_input_bg"
         android:hint="Enter Email Address"/>
@@ -34,7 +35,7 @@
         android:text="Password"/>
     <EditText
         android:id="@+id/faculty_Loginpassword"
-
+        android:maxLines="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/faculty_password"

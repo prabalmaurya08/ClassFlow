@@ -233,7 +233,7 @@
     </fragment>
     <fragment
         android:id="@+id/student_Assignment_Detail_screen"
-        android:name="com.example.classflow.student.studentAssignment.DetailScreen.StudentAssignmentDetailScreen"
+        android:name="com.example.classflow.student.studentAssignment.detailScreen.StudentAssignmentDetailScreen"
         android:label="fragment_student__assignment__detail_screen"
         tools:layout="@layout/fragment_student__assignment__detail_screen" >
         <argument
