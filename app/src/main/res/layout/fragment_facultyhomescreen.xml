@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".admin.adminFaculty.FacultyUploadTimeTableAndClassAllot">
+    tools:context=".faculty.facultyhome.Facultyhomescreen">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -45,6 +45,7 @@
         android:id="@+id/bbdu_image"
         android:layout_width="match_parent"
         android:layout_height="270dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/college_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
