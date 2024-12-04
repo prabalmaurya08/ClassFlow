@@ -22,7 +22,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/faculty_Email_id"
         android:background="@drawable/ic_input_bg"
-        android:hint="Enter Email Address"/>
+        android:hint="Enter Email Address"
+        android:singleLine="true"/>
     <TextView
         android:id="@+id/faculty_password"
         android:layout_width="match_parent"
@@ -39,7 +40,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/faculty_password"
         android:background="@drawable/ic_input_bg"
-        android:hint="Enter Password"/>
+        android:hint="Enter Password"
+        android:singleLine="true"/>
 
     <TextView
         android:id="@+id/goToSignUp"
