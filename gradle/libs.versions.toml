@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.1"
+androidPdfViewer = "3.2.0-beta.1"
+androidPdfViewerVersion = "3.2.0"
 firebaseBom = "33.6.0"
 kotlin = "1.9.0"
 coreKtx = "1.15.0"
@@ -24,6 +26,8 @@ mpandroidchart = "v3.1.0"
 
 
 [libraries]
+android-pdf-viewer = { module = "com.github.barteksc:android-pdf-viewer", version.ref = "androidPdfViewer" }
+android-pdf-viewer-v320 = { module = "com.github.barteksc:android-pdf-viewer", version.ref = "androidPdfViewerVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-navigation-fragment-ktx-v260 = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtxVersion" }

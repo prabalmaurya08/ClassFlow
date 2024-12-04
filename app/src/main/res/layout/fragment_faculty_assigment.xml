@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Assignment"
-            app:titleTextAppearance="@style/student_BoldToolbarTitle"
+
             app:navigationIcon="@drawable/logoclassflow"
             app:titleTextColor="#3367D5"
             app:titleCentered="true">
@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topnavbar"
         tools:listitem="@layout/faculty_assignment_card"

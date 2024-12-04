@@ -1,20 +1,22 @@
-package com.example.classflow.student.studentTimeTable
+package com.example.classflow.faculty.facultytimetable
 
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.classflow.databinding.FragmentStudentTimeTableBinding
+import com.example.classflow.databinding.FragmentFacultytimetableBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
@@ -23,48 +25,55 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.File
 
+class FacultyTimeTable : Fragment() {
 
-class StudentTimeTable : Fragment() {
     private val firestore = FirebaseFirestore.getInstance()
     private val firebaseAuth = FirebaseAuth.getInstance()
-    private lateinit var binding: FragmentStudentTimeTableBinding
-
+    private lateinit var binding: FragmentFacultytimetableBinding
 
     // Declare the listener
-    private var downloadListener: OnStdDownloadButtonClickListener? = null
-    private var viewListener: OnStdViewPdfButtonClickListener? = null
+    private var downloadListener: OnDownloadButtonClickListener? = null
+    private var viewListener: OnViewPdfButtonClickListener? = null
 
     // Listener interfaces
-    interface OnStdDownloadButtonClickListener {
-        fun onStdDownloadButtonClicked(pdfUrl: String)
+    interface OnDownloadButtonClickListener {
+        fun onDownloadButtonClicked(pdfUrl: String)
     }
 
-    interface OnStdViewPdfButtonClickListener {
-        fun onStdViewPdfButtonClicked(pdfFile: File)
+    interface OnViewPdfButtonClickListener {
+        fun onViewPdfButtonClicked(pdfFile: File)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnStdDownloadButtonClickListener) {
+        if (context is OnDownloadButtonClickListener) {
             downloadListener = context
         } else {
             throw RuntimeException("$context must implement OnDownloadButtonClickListener")
         }
 
-        if (context is OnStdViewPdfButtonClickListener) {
+        if (context is OnViewPdfButtonClickListener) {
             viewListener = context
         } else {
             throw RuntimeException("$context must implement OnViewPdfButtonClickListener")
         }
     }
+
+    override fun onDetach() {
+        super.onDetach()
+        downloadListener = null
+        viewListener = null
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding=FragmentStudentTimeTableBinding.inflate(inflater,container,false)
+    ): View {
+        binding = FragmentFacultytimetableBinding.inflate(inflater, container, false)
+        Log.d("FacultyTimetable", "onCreateView called")
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("FacultyTimetable", "onViewCreated called")
@@ -74,24 +83,23 @@ class StudentTimeTable : Fragment() {
         // Download button functionality
         binding.downloadButton.setOnClickListener {
             checkPermissions()
-            fetchAndLoadStudentTimetable()
+            fetchAndLoadFacultyTimetable()
         }
 
         // View PDF button functionality
         binding.viewButton.setOnClickListener {
-            val fileName = "student_timetable.pdf" // Ensure this matches your downloaded file name
+            val fileName = "faculty_timetable.pdf" // Ensure this matches your downloaded file name
             val pdfFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
 
             if (pdfFile.exists()) {
-                viewListener?.onStdViewPdfButtonClicked(pdfFile)
+                viewListener?.onViewPdfButtonClicked(pdfFile)
             } else {
                 Toast.makeText(requireContext(), "PDF not found. Please download it first.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-
-    private fun fetchAndLoadStudentTimetable() {
+    private fun fetchAndLoadFacultyTimetable() {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val firebaseUid = firebaseAuth.currentUser?.uid
@@ -102,7 +110,7 @@ class StudentTimeTable : Fragment() {
                     return@launch
                 }
 
-                // Fetch studentRollNo from the 'users' collection
+                // Fetch facultyId from users collection
                 val userDoc = firestore.collection("users").document(firebaseUid).get().await()
                 if (!userDoc.exists()) {
                     withContext(Dispatchers.Main) {
@@ -111,38 +119,22 @@ class StudentTimeTable : Fragment() {
                     return@launch
                 }
 
-                val studentRollNo = userDoc.getString("studentRollNo") ?: ""
-                if (studentRollNo.isEmpty()) {
+                val facultyId = userDoc.getString("facultyId") ?: ""
+                if (facultyId.isEmpty()) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Student Roll Number not found in user profile", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Faculty ID not found in user profile", Toast.LENGTH_SHORT).show()
                     }
                     return@launch
                 }
 
-                // Fetch section name from the 'studentProfiles' collection
-                val studentProfileDoc = firestore.collection("studentProfiles").document(studentRollNo).get().await()
-                if (!studentProfileDoc.exists()) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Student profile not found", Toast.LENGTH_SHORT).show()
-                    }
-                    return@launch
-                }
-
-                val sectionName = studentProfileDoc.getString("studentSection") ?: ""
-                if (sectionName.isEmpty()) {
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Student section not found in profile", Toast.LENGTH_SHORT).show()
-                    }
-                    return@launch
-                }
-
-                // Fetch timetable URL from the 'sections' collection
-                val sectionDoc = firestore.collection("sections").document(sectionName).get().await()
-                if (sectionDoc.exists()) {
-                    val timetableUrl = sectionDoc.getString("timetableUrl")
+                // Fetch timetable URL from facultyProfiles collection
+                val facultyDoc =
+                    firestore.collection("facultyProfiles").document(facultyId).get().await()
+                if (facultyDoc.exists()) {
+                    val timetableUrl = facultyDoc.getString("timetableUrl")
                     if (!timetableUrl.isNullOrEmpty()) {
                         withContext(Dispatchers.Main) {
-                            downloadListener?.onStdDownloadButtonClicked(timetableUrl)
+                            downloadListener?.onDownloadButtonClicked(timetableUrl)
                         }
                     } else {
                         withContext(Dispatchers.Main) {
@@ -151,7 +143,7 @@ class StudentTimeTable : Fragment() {
                     }
                 } else {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(requireContext(), "Section not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Faculty profile not found", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
@@ -161,7 +153,6 @@ class StudentTimeTable : Fragment() {
             }
         }
     }
-
 
     private fun checkPermissions(): Boolean {
         return if (ContextCompat.checkSelfPermission(
@@ -191,7 +182,7 @@ class StudentTimeTable : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                fetchAndLoadStudentTimetable()
+                fetchAndLoadFacultyTimetable()
             } else {
                 Toast.makeText(requireContext(), "Permissions required to download PDF", Toast.LENGTH_SHORT).show()
             }

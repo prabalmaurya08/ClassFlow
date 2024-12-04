@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".student.studentAssignment.Student_Assignment_Detail_screen">
+    tools:context=".student.studentAssignment.DetailScreen.StudentAssignmentDetailScreen">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Assignment"
-            app:titleTextAppearance="@style/student_BoldToolbarTitle"
+
             app:navigationIcon="@drawable/backward_button_left"
             app:titleTextColor="@color/green_bright"
             app:titleCentered="true">

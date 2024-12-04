@@ -1,4 +1,4 @@
-package com.example.classflow.faculty.facultyhome
+package com.example.classflow.student.studentAssignment.DetailScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import com.example.classflow.R
 
 
-
-class Facultyhomescreen : Fragment() {
-
+class StudentAssignmentDetailScreen : Fragment() {
 
 
     override fun onCreateView(
@@ -18,7 +16,11 @@ class Facultyhomescreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_facultyhomescreen, container, false)
+        return inflater.inflate(
+            R.layout.fragment_student__assignment__detail_screen,
+            container,
+            false
+        )
     }
 
 }

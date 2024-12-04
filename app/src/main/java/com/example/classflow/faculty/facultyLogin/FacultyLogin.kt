@@ -18,28 +18,21 @@ import com.google.firebase.auth.FirebaseAuth
 
 
 class FacultyLogin : Fragment() {
-    private  var listener: OnFaculty ?=null
+    private var listener: OnFaculty? = null
     private lateinit var binding: FragmentFacultyLoginBinding
 
     private lateinit var auth: FirebaseAuth
-    //using Login viewmodal which is on StudentViewModel
-    private lateinit var loginViewModel:StudentViewModel
-
+    // Using LoginViewModel which is on StudentViewModel
+    private lateinit var loginViewModel: StudentViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         when (context) {
-
             is OnFaculty -> {
-                listener=context
-
-
+                listener = context
             }
-
-
-
             else -> {
-                throw ClassCastException("$context must implement OnSignupClickListener")
+                throw ClassCastException("$context must implement OnFaculty")
             }
         }
     }
@@ -47,55 +40,51 @@ class FacultyLogin : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding=FragmentFacultyLoginBinding.inflate(layoutInflater)
+        binding = FragmentFacultyLoginBinding.inflate(layoutInflater)
 
-        //go to sign up Page
+        // Initialize FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+
+        // Go to sign-up Page
         binding.goToSignUp.setOnClickListener {
             listener?.onFacultySignupClicked()
         }
 
+        // Handle login
         facultyLogin()
+
         return binding.root
     }
 
-
     private fun facultyLogin() {
-
-        loginViewModel= ViewModelProvider(this)[StudentViewModel::class.java]
+        loginViewModel = ViewModelProvider(this)[StudentViewModel::class.java]
 
         binding.facultyLoginButton.setOnClickListener {
-
-
-            val email =   binding.facultyLoginEmailAddress.text.toString().trim()
+            val email = binding.facultyLoginEmailAddress.text.toString().trim()
             val password = binding.facultyLoginpassword.text.toString().trim()
 
             if (validateInput(email, password)) {
-
-
                 loginViewModel.login(email, password)
                 observeLoginResult()
             } else {
-                Toast.makeText(requireContext(), "Please enter valid email and password", Toast.LENGTH_SHORT).show()
-           }
+                Toast.makeText(requireContext(), "Please enter a valid email and password", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     private fun observeLoginResult() {
         loginViewModel.loginResult.observe(viewLifecycleOwner) { result ->
-
-
             result.onSuccess { userId ->
                 loginViewModel.getUserRole(userId).observe(viewLifecycleOwner) { userRole ->
                     if (userRole == "faculty") {
-
                         listener?.onFacultyLoginSuccess()
                         Toast.makeText(requireContext(), "Login Successful", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Block login if the role is not doctor
-                        auth.signOut()  // Sign out the user
-                        Toast.makeText(requireContext(), "This account does not belong to a Doctor", Toast.LENGTH_SHORT).show()
+                        // Block login if the role is not faculty
+                        auth.signOut() // Ensure auth is initialized
+                        Toast.makeText(requireContext(), "This account does not belong to a Faculty", Toast.LENGTH_SHORT).show()
                     }
                 }
             }.onFailure {
@@ -104,7 +93,6 @@ class FacultyLogin : Fragment() {
             }
         }
     }
-
 
     private fun validateInput(email: String, password: String): Boolean {
         return when {
@@ -117,7 +105,7 @@ class FacultyLogin : Fragment() {
         }
     }
 
-    interface OnFaculty{
+    interface OnFaculty {
         fun onFacultySignupClicked()
         fun onFacultyLoginSuccess()
     }
