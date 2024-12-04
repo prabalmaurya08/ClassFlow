@@ -37,7 +37,7 @@ class StudentHomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpPieChart()
+       // setUpPieChart()
     }
 
     private fun setUpPieChart(){
@@ -53,7 +53,7 @@ class StudentHomePage : Fragment() {
 
         // Define a custom color list for each label
         val colors: ArrayList<Int> = ArrayList()
-        context?.let { ContextCompat.getColor(it, R.color.green) }?.let { colors.add(it) }
+        //context?.let { ContextCompat.getColor(it, R.color.green) }?.let { colors.add(it) }
         context?.let { ContextCompat.getColor(it, R.color.bluedark) }?.let { colors.add(it) }
 
 
@@ -78,7 +78,7 @@ class StudentHomePage : Fragment() {
     private fun setUpCustomLegend() {
         val labels = listOf("Marked Attendance","Total Attendance")
         val colors = listOf(
-            R.color.green,
+           // R.color.green,
             R.color.bluedark,
 
         )

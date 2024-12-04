@@ -8,7 +8,9 @@
     <color name="lightblack">#03182e</color>
     <color name="beige">#e6e6e6</color>
     <color name="grey">#C5C6CC</color>
-    <color name="green">#10d48e</color>
+    <color name="light_blue">#19aad1</color>
+    <color name="green_bright">#33AC71</color>
+
 
     <color name="blue">#006FFD</color>
 </resources>

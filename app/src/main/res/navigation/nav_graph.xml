@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+
     app:startDestination="@id/mainLogin">
 
     <!-- Admin Main Screen -->
@@ -12,9 +13,6 @@
         android:label="fragment_admin_main_screen"
         tools:layout="@layout/fragment_admin_main_screen">
         <!-- Navigation to Faculty List -->
-        <action
-            android:id="@+id/action_adminMainScreen_to_facultyUploadTimeTableAndClassAllot"
-            app:destination="@id/facultyUploadTimeTableAndClassAllot" />
         <action
             android:id="@+id/action_adminMainScreen_to_adminFacultyDetailScreen"
             app:destination="@id/adminFacultyDetailScreen" />
@@ -74,7 +72,7 @@
             app:destination="@id/facultyMainScreen" />
         <action
             android:id="@+id/action_mainLogin_to_adminLogin2"
-            app:destination="@id/adminLogin2" />
+            app:destination="@id/adminLogin" />
     </fragment>
 
     <fragment
@@ -101,16 +99,31 @@
         android:id="@+id/facultyMainScreen"
         android:name="com.example.classflow.faculty.FacultyMainScreen"
         android:label="fragment_faculty_main_screen"
-        tools:layout="@layout/fragment_faculty_main_screen" />
+        tools:layout="@layout/fragment_faculty_main_screen" >
+        <action
+            android:id="@+id/action_facultyMainScreen_to_facultyAttendancescreenForAllotedclass"
+            app:destination="@id/facultyAttendancescreenForAllotedclass" />
+        <action
+            android:id="@+id/action_facultyMainScreen_to_facultyAssignmentDetail"
+            app:destination="@id/facultyAssignmentDetail" />
+    </fragment>
 
     <fragment
         android:id="@+id/studentMainScreen"
         android:name="com.example.classflow.student.StudentMainScreen"
         android:label="fragment_student_main_screen"
-        tools:layout="@layout/fragment_student_main_screen" />
+        tools:layout="@layout/fragment_student_main_screen" >
+        <action
+            android:id="@+id/action_studentMainScreen_to_student_Assignment_Detail_screen"
+            app:destination="@id/student_Assignment_Detail_screen" >
+            <argument
+                android:name="subject"
+                app:argType="string" />
+        </action>
+    </fragment>
 
     <fragment
-        android:id="@+id/adminLogin2"
+        android:id="@+id/adminLogin"
         android:name="com.example.classflow.admin.adminLogin.AdminLogin"
         android:label="fragment_admin_login"
         tools:layout="@layout/fragment_admin_login">
@@ -128,19 +141,121 @@
         android:label="fragment_student_upload_time_table"
         tools:layout="@layout/fragment_studentupload_time_table" />
     <fragment
+
+        android:id="@+id/facultyAttendanceMainScreen"
+        android:name="com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen"
+        android:label="fragment_faculty_attendance_main_screen"
+        tools:layout="@layout/fragment_faculty_attendance_main_screen" >
+        <action
+            android:id="@+id/action_facultyAttendanceMainScreen_to_facultyAttendancescreenForAllotedclass"
+            app:destination="@id/facultyAttendancescreenForAllotedclass" >
+            <argument
+                android:name="section"
+                app:argType="string" />
+            <argument
+                android:name="subject"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/facultyhomescreen"
+        android:name="com.example.classflow.faculty.facultyhome.FacultyHomeScreen"
+        android:label="fragment_facultyhomescreen"
+        tools:layout="@layout/fragment_facultyhomescreen" />
+    <fragment
+        android:id="@+id/facultytimetable"
+        android:name="com.example.classflow.faculty.facultytimetable.FacultyTimeTable"
+        android:label="fragment_facultytimetable"
+        tools:layout="@layout/fragment_facultytimetable" />
+    <fragment
+        android:id="@+id/studentHomePage"
+        android:name="com.example.classflow.student.studentHomePage.StudentHomePage"
+        android:label="fragment_student_home_page"
+        tools:layout="@layout/fragment_student_home_page" />
+    <fragment
+
         android:id="@+id/studentAssignment"
         android:name="com.example.classflow.student.studentAssignment.StudentAssignment"
         android:label="fragment_student_assignment"
-        tools:layout="@layout/fragment_student_assignment" />
+        tools:layout="@layout/fragment_student_assignment" >
+        <action
+            android:id="@+id/action_studentAssignment_to_student_Assignment_Detail_screen"
+            app:destination="@id/student_Assignment_Detail_screen" />
+    </fragment>
     <fragment
+
         android:id="@+id/facultyAssigment"
-        android:name="com.example.classflow.faculty.facultyAssignment.facultyAssigment"
+        android:name="com.example.classflow.faculty.facultyAssignment.FacultyAssignment"
         android:label="fragment_faculty_assigment"
-        tools:layout="@layout/fragment_faculty_assigment" />
+        tools:layout="@layout/fragment_faculty_assigment" >
+        <action
+            android:id="@+id/action_facultyAssigment_to_facultyAssignmentDetail"
+            app:destination="@id/facultyAssignmentDetail" />
+    </fragment>
     <fragment
         android:id="@+id/facultyAssignmentDetail"
-        android:name="com.example.classflow.faculty.facultyAssignment.FacultyAssignmentDetail"
+        android:name="com.example.classflow.faculty.facultyAssignment.assignmentDetails.FacultyAssignmentDetail"
         android:label="fragment_faculty_assignment_detail"
-        tools:layout="@layout/fragment_faculty_assignment_detail" />
+        tools:layout="@layout/fragment_faculty_assignment_detail" >
+        <argument
+            android:name="section"
+            app:argType="string" />
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentTimeTable"
+        android:name="com.example.classflow.student.studentTimeTable.StudentTimeTable"
+        android:label="fragment_student_time_table"
+        tools:layout="@layout/fragment_student_time_table" />
+    <fragment
+        android:id="@+id/studentAttendance"
+        android:name="com.example.classflow.student.studentAttendance.StudentAttendance"
+        android:label="fragment_student_attendance"
+        tools:layout="@layout/fragment_student_attendance" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.classflow.splashScreen.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" />
+    <fragment
+        android:id="@+id/facultyAttendancescreenForAllotedclass"
+        android:name="com.example.classflow.faculty.facultyAttendance.facultyMarkAttendance.FacultyAttendanceScreenForAllottedClass"
+        android:label="fragment_faculty_attendancescreen_for_allotedclass"
+        tools:layout="@layout/fragment_faculty_attendancescreen_for_allotedclass" >
+        <argument
+            android:name="section"
+            app:argType="string" />
+        <argument
+            android:name="subject"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/student_Assignment_Detail_screen"
+        android:name="com.example.classflow.student.studentAssignment.DetailScreen.StudentAssignmentDetailScreen"
+        android:label="fragment_student__assignment__detail_screen"
+        tools:layout="@layout/fragment_student__assignment__detail_screen" >
+        <argument
+            android:name="subject"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/studentSubjectAttendance"
+        android:name="com.example.classflow.student.studentAttendance.StudentSubjectAttendance"
+        android:label="fragment_student_subject_attendance"
+        tools:layout="@layout/fragment_student_subject_attendance" />
+    <fragment
+        android:id="@+id/facultyLogin"
+        android:name="com.example.classflow.faculty.facultyLogin.FacultyLogin"
+        android:label="fragment_faculty_login"
+        tools:layout="@layout/fragment_faculty_login" />
+    <fragment
+        android:id="@+id/studentLogin"
+        android:name="com.example.classflow.student.studentLogin.StudentLogin"
+        android:label="fragment_student_login"
+        tools:layout="@layout/fragment_student_login" />
+
 
 </navigation>

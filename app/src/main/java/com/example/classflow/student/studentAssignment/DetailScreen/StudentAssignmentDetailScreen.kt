@@ -1,4 +1,4 @@
-package com.example.classflow.faculty.facultyAttendance
+package com.example.classflow.student.studentAssignment.DetailScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.classflow.R
 
 
-class FacultyAttendancescreenForAllotedclass : Fragment() {
+class StudentAssignmentDetailScreen : Fragment() {
 
 
     override fun onCreateView(
@@ -17,11 +17,10 @@ class FacultyAttendancescreenForAllotedclass : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(
-            R.layout.fragment_faculty_attendancescreen_for_allotedclass,
+            R.layout.fragment_student__assignment__detail_screen,
             container,
             false
         )
     }
-
 
 }

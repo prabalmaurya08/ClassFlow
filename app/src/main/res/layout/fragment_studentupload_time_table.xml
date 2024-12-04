@@ -18,9 +18,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Sections"
+            app:title="Student"
+
             app:navigationIcon="@drawable/logoclassflow"
-            app:titleTextColor="@color/bluedark"
+            app:titleTextColor="@color/light_blue"
             app:titleCentered="true">
 
         </com.google.android.material.appbar.MaterialToolbar>

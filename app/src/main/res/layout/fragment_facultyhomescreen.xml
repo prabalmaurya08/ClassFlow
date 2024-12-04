@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".faculty.facultyhome.Facultyhomescreen">
+    tools:context=".faculty.facultyhome.FacultyHomeScreen">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,13 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
+        <!--        top nav bar shadow (jugad)-->
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/logoclassflow"
-            app:title="Home"
+
+            app:title="HomePage"
+
             app:titleCentered="true"
-            app:titleTextColor="@color/bluedark">
+            app:titleTextColor="@color/blue">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -65,9 +69,10 @@
         app:layout_constraintTop_toBottomOf="@id/bbdu_image" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/university_name"

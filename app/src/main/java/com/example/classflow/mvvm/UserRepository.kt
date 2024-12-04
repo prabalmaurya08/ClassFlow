@@ -12,8 +12,6 @@ class UserRepository {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
-
     fun signUpUser(user: User): LiveData<Boolean> {
         val result = MutableLiveData<Boolean>()
         auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -51,12 +49,13 @@ class UserRepository {
                         val userData = hashMapOf(
                             "email" to user.email,
                             "name" to user.name,
-                            "role" to user.role
+                            "role" to user.role,
+                            "studentRollNo" to user.studentRollNo // Save studentRollNo
                         )
                         firestore.collection("users").document(userId).set(userData)
                             .addOnSuccessListener {
                                 when (user.role) {
-                                    "student" -> saveStudentProfile(userId, user)
+                                    "student" -> saveStudentProfile(user.studentRollNo, user) // Use studentRollNo as the document ID
                                     else -> saveAdminProfile(userId, user)
                                 }
                                 result.postValue(true)
@@ -72,20 +71,16 @@ class UserRepository {
         return result
     }
 
-
-    private fun saveStudentProfile(studentId: String,user: User){
+    private fun saveStudentProfile(studentRollNo: String, user: User) {
         val studentData = hashMapOf(
-
             "name" to user.name,
             "studentRollNo" to user.studentRollNo,
             "email" to user.email,
             "studentSection" to user.studentSection
-
-
-
         )
-        firestore.collection("studentProfiles").document(studentId).set(studentData)
 
+        // Save student data in the 'studentProfiles' collection using studentRollNo as the document ID
+        firestore.collection("studentProfiles").document(studentRollNo).set(studentData)
 
         // Data to add to the section
         val studentDataForSection = mapOf(
@@ -106,19 +101,15 @@ class UserRepository {
                 firestore.collection("sections").document(user.studentSection).set(sectionData)
             }
     }
-    private fun saveFacultyProfile(userId: String,user: User){
+
+    private fun saveFacultyProfile(facultyId: String, user: User) {
         val facultyData = hashMapOf(
-
-            "name" to user.name ,
+            "name" to user.name,
             "email" to user.email,
-              "facultyId" to userId
-
-
-
-
+            "facultyId" to facultyId // Save FacultyId
         )
         firestore.collection("facultyProfiles")
-            .document(userId) // Using facultyId as the document ID
+            .document(facultyId) // Using facultyId as the document ID
             .set(facultyData)
             .addOnSuccessListener {
                 Log.d("FacultyViewModel", "Faculty profile saved successfully.")
@@ -128,18 +119,12 @@ class UserRepository {
             }
     }
 
-    private fun saveAdminProfile(adminId: String,user: User){
+    private fun saveAdminProfile(adminId: String, user: User) {
         val adminData = hashMapOf(
-
-            "name" to user.name,
-
-
-
-            )
+            "name" to user.name
+        )
         firestore.collection("adminProfiles").document(adminId).set(adminData)
-
     }
-
 
     private fun validateFacultyId(facultyId: String, callback: (Boolean) -> Unit) {
         firestore.collection("facultyProfiles").document(facultyId)
@@ -158,12 +143,7 @@ class UserRepository {
             }
     }
 
-
-
-
-
-
-//                  FOR LOGIN
+    // FOR LOGIN
 
     suspend fun login(email: String, password: String): Result<String> {
         return try {
@@ -174,7 +154,6 @@ class UserRepository {
         } catch (e: Exception) {
             Result.failure(e)
         }
-
     }
 
     fun getUserRole(userId: String): LiveData<String> {
@@ -192,11 +171,9 @@ class UserRepository {
                 userRole.value = ""
             }
         return userRole
-
     }
-
-
 }
+
 
 
 

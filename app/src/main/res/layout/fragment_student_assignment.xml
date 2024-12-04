@@ -7,41 +7,25 @@
     tools:context=".student.studentAssignment.StudentAssignment">
 
     <com.google.android.material.appbar.AppBarLayout
+
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/StuAssignmentNavbar"
+        android:id="@+id/StuHomeNavbar"
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:id="@+id/StuCFlogo"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/logoclassflow"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/StuAssignmentHeading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Assignment"
-                android:textSize="26sp"
-                android:layout_marginEnd="70dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+            app:title="Assignment"
 
+            app:navigationIcon="@drawable/logoclassflow"
+            app:titleTextColor="@color/green_bright"
+            app:titleCentered="true">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -58,13 +42,13 @@
 
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Student_Assignment_recyclerview"
+        android:id="@+id/student_Assignment_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/StuAssignmentNavbar"
+        app:layout_constraintTop_toBottomOf="@id/StuHomeNavbar"
         tools:listitem="@layout/student_assignment_card"
         />
 

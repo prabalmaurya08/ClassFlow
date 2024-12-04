@@ -4,47 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".student.studentTimeTable.StudentTimeTable">
+    tools:context=".student.studentTimeTable.StudentTimeTable"
+    android:background="@color/white">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/StuHomeNavbar"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:id="@+id/StuCFlogo"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/logoclassflow"
-                android:background="@drawable/ic_input_icbg"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-            <TextView
-                android:id="@+id/StuHomeHeading"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Time Table"
-                android:textSize="28sp"
+            app:title="Time Table"
 
-                android:layout_marginEnd="70dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:textStyle="bold"
-                android:gravity="center"/>
-
+            app:navigationIcon="@drawable/logoclassflow"
+            app:titleTextColor="@color/green_bright"
+            app:titleCentered="true">
 
         </com.google.android.material.appbar.MaterialToolbar>
+
         <!--        top nav bar shadow (jugad)-->
         <ImageView
             android:id="@+id/shadowImage"
@@ -58,6 +41,26 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:text="Download PDF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/StuHomeNavbar" />
+
+
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="View Pdf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/downloadButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

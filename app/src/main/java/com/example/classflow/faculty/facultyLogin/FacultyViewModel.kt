@@ -47,7 +47,7 @@ class FacultyViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-   //  Fetch faculty list from Firestore
+    //  Fetch faculty list from Firestore
     private fun fetchFacultyProfiles() {
         firestore.collection("facultyProfiles")
             .get()
@@ -82,7 +82,7 @@ class FacultyViewModel(application: Application) : AndroidViewModel(application)
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     // Fetch the allottedClasses list, ensuring it's a List type
-                 //   val allottedClasses = document.get("allottedClasses") as? List<Map<String, String>> // Assuming it's a list of maps
+                    //   val allottedClasses = document.get("allottedClasses") as? List<Map<String, String>> // Assuming it's a list of maps
 
                     // If allottedClasses exists, add the new classData to it
                     firestore.collection("facultyProfiles")
@@ -110,3 +110,7 @@ class FacultyViewModel(application: Application) : AndroidViewModel(application)
 
 
 }
+
+
+
+

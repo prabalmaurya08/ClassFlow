@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".faculty.facultyAttendance.FacultyAttendancescreenForAllotedclass">
+    tools:context=".faculty.facultyAttendance.facultyMarkAttendance.FacultyAttendanceScreenForAllottedClass">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,11 +19,11 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/section_name"
-            app:navigationIcon="@drawable/arrow_left"
-            app:title="CS-44"
+            app:navigationIcon="@drawable/backward_button_left"
+            app:title="Attendance"
+
             app:titleCentered="true"
-            app:titleTextColor="@color/bluedark">
+            app:titleTextColor="@color/blue">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -42,13 +42,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/calender_card"
+
         android:focusable="true"
-        app:cardCornerRadius="25dp"
-        app:elevation="8dp"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:clickable="true"
+        android:id="@+id/datePicker"
         android:layout_marginTop="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -57,10 +57,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/faculty_btn_card_gradient_color"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toBottomOf="@id/facultyId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
             android:layout_height="48dp"
+
             android:padding="10dp">
 
             <TextView
@@ -72,7 +84,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textStyle="bold"
-                android:textColor="@color/bluedark"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,18 +97,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="11/05/2002"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/calender_card"
+        android:textColor="@color/blue"
+        app:layout_constraintTop_toBottomOf="@id/datePicker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/recylerview"
-        tools:listitem="@layout/faculty_studentlist_card"
+        tools:listitem="@layout/faculty_attendance_studentlist_card"
         app:layout_constraintTop_toBottomOf="@id/show_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

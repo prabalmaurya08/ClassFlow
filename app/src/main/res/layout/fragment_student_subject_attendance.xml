@@ -21,8 +21,9 @@
             android:id="@+id/section_name"
             app:navigationIcon="@drawable/arrow_left"
             app:title="CS-44"
+            app:titleTextAppearance="@style/student_BoldToolbarTitle"
             app:titleCentered="true"
-            app:titleTextColor="@color/bluedark">
+            app:titleTextColor="@color/green_bright">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total attendance: 23/50"
-        android:textColor="@color/green"
+        android:textColor="@color/green_bright"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginStart="10dp"
@@ -58,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total percentage: 70%"
-        android:textColor="@color/green"
+        android:textColor="@color/green_bright"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
