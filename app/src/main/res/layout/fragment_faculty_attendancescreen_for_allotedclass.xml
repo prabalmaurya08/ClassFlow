@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/backward_button_left"
             app:title="Attendance"
-            app:titleTextAppearance="@style/student_BoldToolbarTitle"
+
             app:titleCentered="true"
             app:titleTextColor="@color/blue">
 

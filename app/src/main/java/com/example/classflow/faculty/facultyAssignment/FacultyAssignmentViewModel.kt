@@ -1,22 +1,16 @@
-package com.example.classflow.faculty.facultyhome
+package com.example.classflow.faculty.facultyAssignment
 
-import android.app.Application
 import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.classflow.mvvm.AllottedClass
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-class FacultyHomeViewModel: ViewModel() {
+class FacultyAssignmentViewModel:ViewModel() {
     private val firestore = FirebaseFirestore.getInstance()
     private val _allottedClasses = MutableLiveData<List<AllottedClass>>()
     val allottedClasses: LiveData<List<AllottedClass>> = _allottedClasses

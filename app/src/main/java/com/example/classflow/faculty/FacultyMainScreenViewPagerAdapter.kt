@@ -13,7 +13,7 @@ import com.example.classflow.faculty.facultytimetable.FacultyTimeTable
 class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
         // Number of fragments for ViewPager2
-        return 3
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -21,8 +21,9 @@ class FacultyMainScreenViewPagerAdapter(fragmentManager: FragmentManager, lifecy
         return when (position){
             0 -> FacultyHomeScreen()
             1 -> FacultyTimeTable()
-            2-> FacultyAttendanceMainScreen()
-         3-> FacultyAssignment()
+
+            2->  FacultyAttendanceMainScreen()
+     3-> FacultyAssignment()
 
             else -> throw IllegalStateException("Unexcepted position: $position")
         }

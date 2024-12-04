@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="Faculties"
-            app:titleTextAppearance="@style/student_BoldToolbarTitle"
+
             app:navigationIcon="@drawable/logoclassflow"
             app:titleTextColor="@color/light_blue"
             app:titleCentered="true">

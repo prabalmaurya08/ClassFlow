@@ -8,7 +8,7 @@ import com.example.classflow.databinding.FacultyClassAndSubjectCardBinding
 
 import com.example.classflow.mvvm.AllottedClass
 
-class AllottedClassAdapter(private val classes: List<AllottedClass>) :
+class AllottedClassAdapter(private var classes: List<AllottedClass>) :
     RecyclerView.Adapter<AllottedClassAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: FacultyClassAndSubjectCardBinding) :
@@ -20,8 +20,9 @@ class AllottedClassAdapter(private val classes: List<AllottedClass>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         val binding =
-            FacultyClassAndSubjectCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            FacultyClassAndSubjectCardBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
@@ -30,4 +31,9 @@ class AllottedClassAdapter(private val classes: List<AllottedClass>) :
     }
 
     override fun getItemCount(): Int = classes.size
+
+    fun updateData(newClasses: List<AllottedClass>) {
+        this.classes = newClasses
+        notifyDataSetChanged() // Notify RecyclerView of data changes
+    }
 }

@@ -18,6 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.classflow.R
 
 import com.example.classflow.databinding.FragmentFacultyMainScreenBinding
+import com.example.classflow.faculty.facultyAssignment.FacultyAssignment
 
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreen
 import com.example.classflow.faculty.facultyAttendance.FacultyAttendanceMainScreenDirections
@@ -25,7 +26,7 @@ import com.example.classflow.faculty.facultytimetable.FacultyTimeTable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class FacultyMainScreen : Fragment() , FacultyAttendanceMainScreen.OnClassClickListener {
+class FacultyMainScreen : Fragment() , FacultyAttendanceMainScreen.OnClassClickListener,FacultyAssignment.OnFaClassClickListener {
 
     private var _binding: FragmentFacultyMainScreenBinding? = null
     private val binding get() = _binding!!
@@ -65,6 +66,7 @@ class FacultyMainScreen : Fragment() , FacultyAttendanceMainScreen.OnClassClickL
                 R.id.bottom_nav_attendance -> viewPager.currentItem = 2
                 R.id.bottom_nav_assignment -> viewPager.currentItem = 3
 
+
             }
             true
         }
@@ -75,6 +77,17 @@ class FacultyMainScreen : Fragment() , FacultyAttendanceMainScreen.OnClassClickL
             // Navigate to Faculty Detail Screen
             val action = FacultyMainScreenDirections
                 .actionFacultyMainScreenToFacultyAttendancescreenForAllotedclass(section, subject)
+            findNavController().navigate(action)
+        } catch (e: Exception) {
+            Log.e("AdminMainScreen", "Navigation failed: ${e.message}")
+        }
+    }
+
+    override fun onFaClassClicked(section: String, subject: String) {
+        try {
+            // Navigate to Faculty Detail Screen
+            val action = FacultyMainScreenDirections
+                .actionFacultyMainScreenToFacultyAssignmentDetail(section, subject)
             findNavController().navigate(action)
         } catch (e: Exception) {
             Log.e("AdminMainScreen", "Navigation failed: ${e.message}")
