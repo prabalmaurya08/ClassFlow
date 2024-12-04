@@ -48,22 +48,34 @@
         android:layout_height="48dp"
         android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/Stu_Loginpassword"
-
         android:textSize="16sp"
         android:gravity="center"
         android:clickable="true"
         android:textStyle="bold"
-        android:textColor="@color/blue"
-        android:text="Signup"/>
+        android:textColor="@color/green_bright"
+        android:text="Signup?"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_btn_card_gradient_color"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/goToSignUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
     <Button
         android:id="@+id/StuLoginButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:text="Login"
+        android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/goToSignUp"
-        android:layout_marginVertical="10dp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/blue"
-        android:text="Login"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/adminLogin"
@@ -75,7 +87,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:clickable="true"
-        android:textColor="@color/bluedark"/>
+        android:textColor="@color/blue"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

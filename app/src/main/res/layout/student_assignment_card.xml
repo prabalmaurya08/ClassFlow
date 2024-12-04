@@ -66,8 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_margin="10dp"
-
-                />
+                tools:ignore="MissingConstraints" />
 
 
 

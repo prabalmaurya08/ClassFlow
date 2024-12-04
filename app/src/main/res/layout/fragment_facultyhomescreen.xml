@@ -22,8 +22,9 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/logoclassflow"
             app:title="Home"
+            app:titleTextAppearance="@style/student_BoldToolbarTitle"
             app:titleCentered="true"
-            app:titleTextColor="@color/bluedark">
+            app:titleTextColor="@color/blue">
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
