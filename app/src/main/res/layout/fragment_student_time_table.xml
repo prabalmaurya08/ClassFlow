@@ -41,11 +41,12 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
     <Button
         android:id="@+id/downloadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="Download PDF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,14 +54,5 @@
         app:layout_constraintTop_toTopOf="@+id/StuHomeNavbar" />
 
 
-    <Button
-        android:id="@+id/viewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="View Pdf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/downloadButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

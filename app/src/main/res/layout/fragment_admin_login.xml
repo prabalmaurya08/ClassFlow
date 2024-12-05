@@ -3,71 +3,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginTop="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".admin.adminLogin.AdminLogin">
 
-    <ImageView
-        android:id="@+id/AdminBackButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-
-        android:src="@drawable/arrow_left"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
-
-    <TextView
-        android:id="@+id/AdminLoginHeading"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Admin Login"
-        android:textSize="20sp"
-        android:padding="5dp"
+        android:id="@+id/topnavbar"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Admin Login"
+            android:id="@+id/AdminBackButton"
+
+            app:navigationIcon="@drawable/backward_button_left"
+            app:titleTextColor="@color/light_blue"
+            app:titleCentered="true">
+
+        </com.google.android.material.appbar.MaterialToolbar>
+        <!--        top nav bar shadow (jugad)-->
+        <ImageView
+            android:id="@+id/shadowImage"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:src="@drawable/shadow_backgorund"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toBottomOf="@id/topnavbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+
+
 
     <TextView
         android:id="@+id/admin_Email_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/AdminLoginHeading"
-        android:paddingVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@id/topnavbar"
         android:textSize="16sp"
-        android:layout_marginTop="30dp"
+        android:layout_margin="10dp"
         android:textStyle="bold"
         android:text="Email Address"/>
     <EditText
         android:id="@+id/admin_LoginEmailAddress"
         android:layout_width="match_parent"
-
+        android:layout_margin="10dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/admin_Email_id"
         android:background="@drawable/ic_input_bg"
-        android:hint="Enter Email Address"/>
+        android:hint="Enter Email Address"
+        android:singleLine="true"/>
     <TextView
         android:id="@+id/admin_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/admin_LoginEmailAddress"
-        android:paddingVertical="10dp"
+        android:layout_margin="10dp"
         android:textSize="16sp"
         android:textStyle="bold"
         android:text="Password"/>
     <EditText
         android:id="@+id/admin_LoginPassword"
-
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/admin_password"
         android:background="@drawable/ic_input_bg"
-        android:hint="Enter Password"/>
+        android:hint="Enter Password"
+        android:singleLine="true"/>
 
 
 
@@ -75,6 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/admin_btn_card_gradient_color"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/admin_LoginPassword"
@@ -87,6 +102,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="Login"
         android:background="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/admin_LoginPassword"
