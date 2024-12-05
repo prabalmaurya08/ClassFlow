@@ -14,6 +14,7 @@ import com.example.classflow.databinding.FragmentFacultyAttendancescreenForAllot
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import java.util.Calendar
 
 class FacultyAttendanceScreenForAllottedClass : Fragment() {
@@ -39,6 +40,10 @@ class FacultyAttendanceScreenForAllottedClass : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFacultyAttendancescreenForAllotedclassBinding.inflate(inflater, container, false)
+
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         return binding.root
     }
 

@@ -43,7 +43,7 @@ class AdminLogin : Fragment() {
         }
 
 
-        binding.AdminBackButton.setOnClickListener {
+        binding.toolbar.setOnClickListener {
             findNavController().navigate(R.id.action_adminLogin2_to_mainLogin)
         }
 

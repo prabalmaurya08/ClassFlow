@@ -120,6 +120,13 @@
                 android:name="subject"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_studentMainScreen_to_studentSubjectAttendance"
+            app:destination="@id/studentSubjectAttendance" >
+            <argument
+                android:name="subjectName"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
@@ -213,7 +220,11 @@
         android:id="@+id/studentAttendance"
         android:name="com.example.classflow.student.studentAttendance.StudentAttendance"
         android:label="fragment_student_attendance"
-        tools:layout="@layout/fragment_student_attendance" />
+        tools:layout="@layout/fragment_student_attendance" >
+        <action
+            android:id="@+id/action_studentAttendance_to_studentSubjectAttendance"
+            app:destination="@id/studentSubjectAttendance" />
+    </fragment>
     <fragment
         android:id="@+id/splashScreen"
         android:name="com.example.classflow.splashScreen.SplashScreen"

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.classflow.databinding.FragmentFacultyAssignmentDetailBinding
@@ -34,7 +35,9 @@ class FacultyAssignmentDetail : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         val section = args.section
         val subject = args.subject
 
