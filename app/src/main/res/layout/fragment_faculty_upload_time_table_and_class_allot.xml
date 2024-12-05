@@ -22,7 +22,8 @@
 
             app:navigationIcon="@drawable/logoclassflow"
             app:titleTextColor="@color/light_blue"
-            app:titleCentered="true">
+            app:titleCentered="true"
+            app:menu="@menu/toolbar_logout" >
 
         </com.google.android.material.appbar.MaterialToolbar>
 <!--        top nav bar shadow (jugad)-->
