@@ -9,15 +9,21 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.classflow.R
 import com.example.classflow.databinding.FragmentStudentHomePageBinding
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.firebase.auth.FirebaseAuth
 
 
 class StudentHomePage : Fragment() {
+
+
+    // Firebase Authentication instance
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var _binding: FragmentStudentHomePageBinding? = null
     private val binding get() = _binding!!
 
@@ -27,6 +33,9 @@ class StudentHomePage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentStudentHomePageBinding.inflate(inflater, container, false)
+
+
+        setUpPieChart()
         return binding.root
     }
 
@@ -37,12 +46,24 @@ class StudentHomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       setUpPieChart()
+//        binding.toolbar.setOnMenuItemClickListener { item ->
+//            when (item.itemId) {
+//                R.id.action_logout -> {
+//                    // Call the logout function
+//                    auth.signOut()
+//                    findNavController().navigate(R.id.action_studentHomePage_to_mainLogin)
+//
+//                    true
+//                }
+//                else -> false
+//            }
+//
+//    }
     }
 
     private fun setUpPieChart(){
 
-val pieChart=binding.pieChart
+        val pieChart=binding.pieChart
         //Make array of PieEntry
         val list:ArrayList<PieEntry> = ArrayList()
 

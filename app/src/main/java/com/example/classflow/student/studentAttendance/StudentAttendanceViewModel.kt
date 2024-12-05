@@ -69,11 +69,11 @@ class StudentAttendanceViewModel : ViewModel() {
                     _subjectNames.postValue(subjectNamesList)
                     Log.d("StudentAttendance", "Updated subject names: $subjectNamesList")
                 } else {
-                    _errorMessage.postValue("No subjects found for this student in the section.")
+                    _errorMessage.postValue("Fetching Data....Please Wait")
                     Log.d("StudentAttendance", "No subjects found for section: $sectionName")
                 }
             } catch (e: Exception) {
-                _errorMessage.postValue("Error fetching subjects: ${e.message}")
+                _errorMessage.postValue("Fetching Data....Please Wait")
                 Log.e("StudentAttendance", "Error: ${e.message}")
             }
         }

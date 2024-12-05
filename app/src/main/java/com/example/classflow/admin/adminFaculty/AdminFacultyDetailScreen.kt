@@ -63,8 +63,8 @@ class AdminFacultyDetailScreen : Fragment() {
 
     private fun setupSpinners() {
         // Example data
-        val sections = listOf("Select Section","CS41", "CS42", "CS43","CS44")//add select section
-        val subjects = listOf("Select Subject","Math", "Science", "English")//add select subject
+        val sections = listOf("Select Section","CS41", "CS42", "CS43","CS44","CS45","CS46")//add select section
+        val subjects = listOf("Select Subject","Discrete Maths", "Software Engineering", "Web Technology", "Computer Networks","Java Basics","Compiler Design")//add select subject
 
         val sectionAdapter = ArrayAdapter(
             requireContext(),

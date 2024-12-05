@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.classflow.R
 import com.example.classflow.databinding.FragmentFacultyhomescreenBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -21,12 +23,31 @@ class FacultyHomeScreen : Fragment() {
     private val viewModel: FacultyHomeViewModel by viewModels()
     private lateinit var adapter: AllottedClassAdapter
 
+    // Firebase Authentication instance
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFacultyhomescreenBinding.inflate(inflater, container, false)
+
+
+
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    // Call the logout function
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_facultyhomescreen_to_mainLogin)
+
+                    true
+                }
+
+                else -> false
+            }
+        }
 
         // Initialize RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
