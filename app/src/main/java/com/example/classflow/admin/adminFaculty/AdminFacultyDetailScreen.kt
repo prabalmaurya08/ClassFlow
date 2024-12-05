@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.classflow.R
 import com.example.classflow.databinding.FragmentAdminFacultyDetailScreenBinding
 import com.example.classflow.faculty.facultyLogin.FacultyViewModel
@@ -33,7 +34,9 @@ class AdminFacultyDetailScreen : Fragment() {
 
         facultyId = arguments?.getString("facultyId") ?: ""
         facultyName = arguments?.getString("facultyName") ?: ""
-
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)

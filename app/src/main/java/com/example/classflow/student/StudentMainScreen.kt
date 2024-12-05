@@ -13,10 +13,11 @@ import com.example.classflow.admin.AdminMainScreenViewPagerAdaptor
 import com.example.classflow.databinding.FragmentStudentMainScreenBinding
 import com.example.classflow.faculty.FacultyMainScreenDirections
 import com.example.classflow.student.studentAssignment.StudentAssignment
+import com.example.classflow.student.studentAttendance.StudentAttendance
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class StudentMainScreen : Fragment(),StudentAssignment.OnSubjectClickListener {
+class StudentMainScreen : Fragment(),StudentAssignment.OnSubjectClickListener, StudentAttendance.OnSectionClickListener {
     private lateinit var binding: FragmentStudentMainScreenBinding
 
     private lateinit var viewPager: ViewPager2
@@ -64,6 +65,17 @@ class StudentMainScreen : Fragment(),StudentAssignment.OnSubjectClickListener {
             // Navigate to Faculty Detail Screen
             val action = StudentMainScreenDirections
                 .actionStudentMainScreenToStudentAssignmentDetailScreen(subject)
+            findNavController().navigate(action)
+        } catch (e: Exception) {
+            Log.e("StudentNav", "Navigation failed: ${e.message}")
+        }
+    }
+
+    override fun onSectionClick(subjectName: String) {
+        try {
+            // Navigate to Faculty Detail Screen
+            val action = StudentMainScreenDirections
+                .actionStudentMainScreenToStudentSubjectAttendance(subjectName)
             findNavController().navigate(action)
         } catch (e: Exception) {
             Log.e("StudentNav", "Navigation failed: ${e.message}")
