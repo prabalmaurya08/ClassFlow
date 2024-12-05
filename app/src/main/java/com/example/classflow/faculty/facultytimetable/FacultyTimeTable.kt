@@ -87,16 +87,16 @@ class FacultyTimeTable : Fragment() {
         }
 
         // View PDF button functionality
-        binding.viewButton.setOnClickListener {
-            val fileName = "faculty_timetable.pdf" // Ensure this matches your downloaded file name
-            val pdfFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
-
-            if (pdfFile.exists()) {
-                viewListener?.onViewPdfButtonClicked(pdfFile)
-            } else {
-                Toast.makeText(requireContext(), "PDF not found. Please download it first.", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        binding.viewButton.setOnClickListener {
+//            val fileName = "faculty_timetable.pdf" // Ensure this matches your downloaded file name
+//            val pdfFile = File(requireContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
+//
+//            if (pdfFile.exists()) {
+//                viewListener?.onViewPdfButtonClicked(pdfFile)
+//            } else {
+//                Toast.makeText(requireContext(), "PDF not found. Please download it first.", Toast.LENGTH_SHORT).show()
+//            }
+    //}
     }
 
     private fun fetchAndLoadFacultyTimetable() {
