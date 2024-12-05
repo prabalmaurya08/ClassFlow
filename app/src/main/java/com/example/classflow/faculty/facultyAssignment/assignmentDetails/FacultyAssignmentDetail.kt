@@ -92,7 +92,7 @@ class FacultyAssignmentDetail : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
             selectedFileUri = data?.data
-            binding.filePathText.text = selectedFileUri?.lastPathSegment ?: "No file selected"
+            //binding.filePathText.text = selectedFileUri?.lastPathSegment ?: "No file selected"
             Log.d("FacultyAssignmentDetail", "File selected: $selectedFileUri")
         }
     }
