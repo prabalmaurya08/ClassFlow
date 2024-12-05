@@ -15,5 +15,5 @@
 
     android:gravity="center"
     android:background="@drawable/login_tab_background_selector"
-    android:textColor="@color/white"/>
+    android:textColor="@color/black"/>
 

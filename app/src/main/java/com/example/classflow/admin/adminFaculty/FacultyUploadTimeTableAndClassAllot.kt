@@ -78,6 +78,14 @@ class FacultyUploadTimeTableAndClassAllot : Fragment() {
 
     private fun observeFacultyList() {
         viewModel.facultyList.observe(viewLifecycleOwner, Observer { facultyList ->
+
+            if(facultyList.isEmpty()){
+                binding.noFacultyFound.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.GONE
+            }else{
+                binding.noFacultyFound.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            }
             facultyAdapter.submitList(facultyList)
         })
         // Observe action status for messages

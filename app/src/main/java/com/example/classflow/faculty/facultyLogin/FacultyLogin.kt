@@ -66,6 +66,11 @@ class FacultyLogin : Fragment() {
             val password = binding.facultyLoginpassword.text.toString().trim()
 
             if (validateInput(email, password)) {
+                // Hide the button and show the progress bar
+                binding.facultyLoginButton.visibility = View.GONE
+                binding.loginProgressBar.visibility = View.VISIBLE
+                binding.img.visibility = View.GONE
+
                 loginViewModel.login(email, password)
                 observeLoginResult()
             } else {
@@ -76,20 +81,25 @@ class FacultyLogin : Fragment() {
 
     private fun observeLoginResult() {
         loginViewModel.loginResult.observe(viewLifecycleOwner) { result ->
+            // Restore the button and hide the progress bar when login completes
+            binding.facultyLoginButton.visibility = View.VISIBLE
+            binding.img.visibility = View.VISIBLE
+            binding.loginProgressBar.visibility = View.GONE
+
             result.onSuccess { userId ->
                 loginViewModel.getUserRole(userId).observe(viewLifecycleOwner) { userRole ->
                     if (userRole == "faculty") {
                         listener?.onFacultyLoginSuccess()
                         Toast.makeText(requireContext(), "Login Successful", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Block login if the role is not faculty
-                        auth.signOut() // Ensure auth is initialized
+                        auth.signOut()
                         Toast.makeText(requireContext(), "This account does not belong to a Faculty", Toast.LENGTH_SHORT).show()
                     }
                 }
             }.onFailure {
-                // Login failed, show an error message
                 Toast.makeText(requireContext(), "Login Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                binding.facultyLoginButton.visibility = View.VISIBLE
+                binding.img.visibility = View.VISIBLE
             }
         }
     }

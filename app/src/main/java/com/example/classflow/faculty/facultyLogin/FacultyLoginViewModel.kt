@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class FacultyLoginViewModel (application: Application) : AndroidViewModel(application) {
     private val facultyRepository = UserRepository()
-    val signupResult: LiveData<Boolean> = MutableLiveData()
+    val fSignupResult: LiveData<Boolean> = MutableLiveData()
 
 
 
@@ -19,9 +19,9 @@ class FacultyLoginViewModel (application: Application) : AndroidViewModel(applic
     private val repository= UserRepository()
 
 
-    fun signUpStudent(studentUser: User) {
+    fun signUpFaculty(studentUser: User) {
         facultyRepository.signUpUser(studentUser).observeForever {
-            (signupResult as MutableLiveData).postValue(it)
+            (fSignupResult as MutableLiveData).postValue(it)
 
         }
 
@@ -32,7 +32,7 @@ class FacultyLoginViewModel (application: Application) : AndroidViewModel(applic
 
     fun login(email:String,password:String){
         viewModelScope.launch {
-            val result=repository.login(email,password)
+            val result=repository.facultyLogin(email,password)
             _loginResult.value=result
 
         }

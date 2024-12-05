@@ -59,11 +59,18 @@ class StudentAssignment : Fragment() {
         }
         binding.studentAssignmentRecyclerview.adapter = adapter
 
+        Log.d("StudentAssignment", "Adapter attached to RecyclerView")
+        Log.d("StudentAssignment", "RecyclerView visibility: ${binding.studentAssignmentRecyclerview.visibility}")
+
         // Observe subjects LiveData
         viewModel.subjects.observe(viewLifecycleOwner) { subjects ->
+            Log.d("StudentAttendance", "Subjects: line no 67 $subjects")
             if (subjects.isNullOrEmpty()) {
                 Toast.makeText(requireContext(), "No subjects found", Toast.LENGTH_SHORT).show()
+                Log.d("StudentAttendance", "Subjects: line no 69 $subjects")
             } else {
+
+
                 adapter.submitList(subjects)
             }
         }

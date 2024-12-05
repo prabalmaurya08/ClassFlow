@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class StudentViewModel(application: Application) : AndroidViewModel(application) {
     private val studentRepository = UserRepository()
-    val signupResult: LiveData<Boolean> = MutableLiveData()
+   val signupResult: LiveData<Boolean> = MutableLiveData()
 
 
 

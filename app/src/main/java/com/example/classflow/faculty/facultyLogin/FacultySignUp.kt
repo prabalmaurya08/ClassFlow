@@ -15,7 +15,7 @@ import com.example.classflow.mvvm.User
 
 class FacultySignUp : Fragment() {
     private lateinit var binding: FragmentFacultySignUpBinding
-    private lateinit var viewModel: FacultyViewModel
+    private lateinit var viewModel: FacultyLoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,11 +33,11 @@ class FacultySignUp : Fragment() {
         return binding.root
     }
     private fun setUpSignUpViewModel(){
-        viewModel= ViewModelProvider(this)[FacultyViewModel::class.java]
+        viewModel= ViewModelProvider(this)[FacultyLoginViewModel::class.java]
         binding.FacultySignUpButton.setOnClickListener {
             val name=binding.FacultyEnterName.text.toString()
-            val email=binding.FacultySignUpEmailAddress.text.toString()
-            val password=binding.FacultySignUppassword.text.toString()
+            val email=binding.FacultySignUpEmailAddress.text.toString().trim()
+            val password=binding.FacultySignUppassword.text.toString().trim()
 
             val facultyId=binding.FacultyId.text.toString()
             val facultyUser= User(name,email,password,"faculty", facultyId = facultyId)
@@ -45,12 +45,12 @@ class FacultySignUp : Fragment() {
 
         }
 
-        viewModel.signupResult.observe(viewLifecycleOwner){
+        viewModel.fSignupResult.observe(viewLifecycleOwner){
             if (it){
                 findNavController().navigate(R.id.action_facultySignUp_to_mainLogin)
             }
             else{
-                binding.FacultySignUpEmailAddress.error="Email Already Exists"
+
             }
         }
 

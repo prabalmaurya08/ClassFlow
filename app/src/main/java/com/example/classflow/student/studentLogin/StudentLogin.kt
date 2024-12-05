@@ -65,17 +65,17 @@ class StudentLogin : Fragment() {
 
 
     private fun studentLogin() {
-
-        loginViewModel= ViewModelProvider(this)[StudentViewModel::class.java]
+        loginViewModel = ViewModelProvider(this)[StudentViewModel::class.java]
 
         binding.StuLoginButton.setOnClickListener {
-
-
-            val email =   binding.StuLoginEmailAddress.text.toString().trim()
+            val email = binding.StuLoginEmailAddress.text.toString().trim()
             val password = binding.StuLoginpassword.text.toString().trim()
 
             if (validateInput(email, password)) {
-
+                // Hide the button and show the progress bar
+                binding.StuLoginButton.visibility = View.GONE
+                binding.img.visibility = View.GONE
+                binding.loginProgressBar.visibility = View.VISIBLE
 
                 loginViewModel.login(email, password)
                 observeLoginResult()
@@ -87,26 +87,29 @@ class StudentLogin : Fragment() {
 
     private fun observeLoginResult() {
         loginViewModel.loginResult.observe(viewLifecycleOwner) { result ->
-
+            // Restore the button and hide the progress bar when login completes
+            binding.StuLoginButton.visibility = View.VISIBLE
+            binding.img.visibility = View.VISIBLE
+            binding.loginProgressBar.visibility = View.GONE
 
             result.onSuccess { userId ->
                 loginViewModel.getUserRole(userId).observe(viewLifecycleOwner) { userRole ->
                     if (userRole == "student") {
-
                         listener?.onStudentLoginSuccess()
                         Toast.makeText(requireContext(), "Login Successful", Toast.LENGTH_SHORT).show()
                     } else {
-                        // Block login if the role is not doctor
-                        auth.signOut()  // Sign out the user
+                        auth.signOut()
                         Toast.makeText(requireContext(), "This account does not belong to a Student", Toast.LENGTH_SHORT).show()
                     }
                 }
             }.onFailure {
-                // Login failed, show an error message
                 Toast.makeText(requireContext(), "Login Failed: ${it.message}", Toast.LENGTH_SHORT).show()
+                binding.StuLoginButton.visibility = View.VISIBLE
+                binding.img.visibility = View.VISIBLE
             }
         }
     }
+
 
 
     private fun validateInput(email: String, password: String): Boolean {

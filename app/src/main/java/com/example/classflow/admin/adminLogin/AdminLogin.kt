@@ -18,7 +18,7 @@ class AdminLogin : Fragment() {
     private lateinit var binding: FragmentAdminLoginBinding
 
     private lateinit var auth: FirebaseAuth
-    private val adminEmail = "admin01@gmail.com" // Replace with your admin email
+    private val adminEmail = "admin@gmail.com" // Replace with your admin email
     private val adminPassword = "123456"
 
 
@@ -43,8 +43,9 @@ class AdminLogin : Fragment() {
         }
 
 
-        binding.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.action_adminLogin2_to_mainLogin)
+
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
 
         return binding.root

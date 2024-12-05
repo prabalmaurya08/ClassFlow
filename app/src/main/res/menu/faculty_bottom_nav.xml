@@ -10,6 +10,6 @@
         android:title="Attendence"
         android:icon="@drawable/attendance_icon"/>
     <item android:id="@+id/bottom_nav_assignment"
-        android:title="Attendence"
+        android:title="Assignment"
         android:icon="@drawable/assignment_icon"/>
 </menu>

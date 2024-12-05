@@ -34,7 +34,7 @@ class AssignmentAdapter(
         holder.assignmentName.text = assignment.name
         // Convert timestamp to readable date format
         val date = Date(assignment.timestamp) // Convert the timestamp to a Date object
-        val format = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault()) // Define your desired format
+        val format = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()) // Define your desired format
         val formattedDate = format.format(date) // Format the Date object
 
         // Display the formatted date in the card (you can create a new TextView for this in the layout)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
 
-    app:startDestination="@id/mainLogin">
+    app:startDestination="@id/splashScreen">
 
     <!-- Admin Main Screen -->
     <fragment
@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_adminMainScreen_to_adminFacultyDetailScreen"
             app:destination="@id/adminFacultyDetailScreen" />
+        <action
+            android:id="@+id/action_adminMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <!-- Faculty Upload Time Table and Class Allot -->
@@ -106,6 +109,9 @@
         <action
             android:id="@+id/action_facultyMainScreen_to_facultyAssignmentDetail"
             app:destination="@id/facultyAssignmentDetail" />
+        <action
+            android:id="@+id/action_facultyMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <fragment
@@ -127,6 +133,9 @@
                 android:name="subjectName"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_studentMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <fragment
@@ -168,7 +177,11 @@
         android:id="@+id/facultyhomescreen"
         android:name="com.example.classflow.faculty.facultyhome.FacultyHomeScreen"
         android:label="fragment_facultyhomescreen"
-        tools:layout="@layout/fragment_facultyhomescreen" />
+        tools:layout="@layout/fragment_facultyhomescreen" >
+        <action
+            android:id="@+id/action_facultyhomescreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
+    </fragment>
     <fragment
         android:id="@+id/facultytimetable"
         android:name="com.example.classflow.faculty.facultytimetable.FacultyTimeTable"
@@ -178,7 +191,11 @@
         android:id="@+id/studentHomePage"
         android:name="com.example.classflow.student.studentHomePage.StudentHomePage"
         android:label="fragment_student_home_page"
-        tools:layout="@layout/fragment_student_home_page" />
+        tools:layout="@layout/fragment_student_home_page" >
+        <action
+            android:id="@+id/action_studentHomePage_to_mainLogin"
+            app:destination="@id/mainLogin" />
+    </fragment>
     <fragment
 
         android:id="@+id/studentAssignment"
@@ -229,7 +246,11 @@
         android:id="@+id/splashScreen"
         android:name="com.example.classflow.splashScreen.SplashScreen"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" />
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
+    </fragment>
     <fragment
         android:id="@+id/facultyAttendancescreenForAllotedclass"
         android:name="com.example.classflow.faculty.facultyAttendance.facultyMarkAttendance.FacultyAttendanceScreenForAllottedClass"

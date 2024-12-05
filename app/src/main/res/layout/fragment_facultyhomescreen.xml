@@ -22,6 +22,7 @@
         <!--        top nav bar shadow (jugad)-->
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
+            android:id="@+id/toolbar"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/logoclassflow"
             app:title="HomePage"

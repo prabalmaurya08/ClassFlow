@@ -16,13 +16,17 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.classflow.admin.adminStudent.StudentUploadTimeTable
 import com.example.classflow.faculty.facultyLogin.FacultyLogin
+import com.example.classflow.faculty.facultyhome.FacultyHomeScreen
 import com.example.classflow.faculty.facultytimetable.FacultyTimeTable
+import com.example.classflow.student.studentHomePage.StudentHomePage
 import com.example.classflow.student.studentLogin.StudentLogin
 import com.example.classflow.student.studentTimeTable.StudentTimeTable
 import java.io.File
 
-class MainActivity : AppCompatActivity(), StudentLogin.OnStudent, FacultyLogin.OnFaculty,FacultyTimeTable.OnDownloadButtonClickListener,FacultyTimeTable.OnViewPdfButtonClickListener,StudentTimeTable.OnStdDownloadButtonClickListener ,StudentTimeTable.OnStdViewPdfButtonClickListener{
+class MainActivity : AppCompatActivity(), StudentLogin.OnStudent, FacultyLogin.OnFaculty,FacultyTimeTable.OnDownloadButtonClickListener,FacultyTimeTable.OnViewPdfButtonClickListener,StudentTimeTable.OnStdDownloadButtonClickListener ,StudentTimeTable.OnStdViewPdfButtonClickListener,FacultyHomeScreen.OnLogoutListener
+,StudentUploadTimeTable.OnAdminLogoutListener,StudentHomePage.OnStdLogoutListener{
 
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -161,6 +165,18 @@ class MainActivity : AppCompatActivity(), StudentLogin.OnStudent, FacultyLogin.O
         } catch (e: Exception) {
             Toast.makeText(this, "Unable to open PDF. Error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onLogout() {
+        findNavController(R.id.fragment).navigate(R.id.action_facultyMainScreen_to_mainLogin)
+    }
+
+    override fun onAdminLogout() {
+        findNavController(R.id.fragment).navigate(R.id.action_adminMainScreen_to_mainLogin)
+    }
+
+    override fun onStdLogout() {
+        findNavController(R.id.fragment).navigate(R.id.action_studentMainScreen_to_mainLogin)
     }
 
 }

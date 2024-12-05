@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.classflow.R
 import com.example.classflow.databinding.FragmentStudentSignUpBinding
+import com.example.classflow.faculty.facultyLogin.FacultyLoginViewModel
 import com.example.classflow.mvvm.User
 
 

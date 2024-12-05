@@ -52,31 +52,28 @@ class StudentAttendanceViewModel : ViewModel() {
                     return@launch
                 }
 
-                // Fetch the subjects from the 'attendanceRecords' collection by querying the 'subjectInfo' array
+                // Fetch subjects directly by checking the subcollections under the sectionName document in 'attendanceRecords'
                 val sectionRef = firestore.collection("attendanceRecords").document(sectionName)
-                Log.d("StudentAttendance", "Student Section Name: $sectionName")
+                val subjectSnapshot = sectionRef.collection("subjects").get().await()
 
-                // Fetch the 'subjectInfo' field (which is a list of strings)
-                val sectionDoc = sectionRef.get().await()
-
-                // Check if the document exists and contains the 'subjectInfo' field
-                if (sectionDoc.exists()) {
-                    val subjectInfoList = sectionDoc.get("subjectInfo") as? List<String> ?: emptyList()
-
-                    // Log and update the subject names list
-                    val subjectNamesList = subjectInfoList.toMutableList()
-                    subjectNamesList.forEach { subjectName ->
+                // Check if subjects are available under the section document
+                if (!subjectSnapshot.isEmpty) {
+                    val subjectNamesList = mutableListOf<String>()
+                    subjectSnapshot.forEach { document ->
+                        val subjectName = document.id // Document ID is used as subject name
+                        subjectNamesList.add(subjectName)
                         Log.d("StudentAttendance", "Subject: $subjectName")
                     }
 
-                    // Post the subject names to the LiveData
+                    // Post the subject names to LiveData
                     _subjectNames.postValue(subjectNamesList)
+                    Log.d("StudentAttendance", "Updated subject names: $subjectNamesList")
                 } else {
-                    _errorMessage.postValue("Section document does not exist or has no subjectInfo.")
-                    Log.d("StudentAttendance", "Section document does not exist.")
+                    _errorMessage.postValue("Fetching Data....Please Wait")
+                    Log.d("StudentAttendance", "No subjects found for section: $sectionName")
                 }
             } catch (e: Exception) {
-                _errorMessage.postValue("Error fetching subjects: ${e.message}")
+                _errorMessage.postValue("Fetching Data....Please Wait")
                 Log.e("StudentAttendance", "Error: ${e.message}")
             }
         }

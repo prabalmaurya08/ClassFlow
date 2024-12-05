@@ -1,32 +1,59 @@
 package com.example.classflow.student.studentHomePage
 
+import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.classflow.R
 import com.example.classflow.databinding.FragmentStudentHomePageBinding
+import com.example.classflow.faculty.facultyhome.FacultyHomeScreen.OnLogoutListener
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.google.firebase.auth.FirebaseAuth
 
 
 class StudentHomePage : Fragment() {
+
+
+    // Firebase Authentication instance
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var _binding: FragmentStudentHomePageBinding? = null
     private val binding get() = _binding!!
-    private lateinit var pieChart: PieChart
-    override fun onCreateView(
+
+
+
+    // Firebase Authentication instance
+
+    private var listener: OnStdLogoutListener? = null
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Attach the listener to the hosting activity or parent fragment
+        if (context is OnStdLogoutListener) {
+            listener = context
+        } else {
+            throw ClassCastException("$context must implement OnLogoutListener")
+        }
+    }
+            override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentStudentHomePageBinding.inflate(inflater, container, false)
+
+
+        setUpPieChart()
         return binding.root
     }
 
@@ -37,24 +64,55 @@ class StudentHomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // setUpPieChart()
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    Log.d("FacultyHomeScreen", "Logout menu clicked")
+                    try {
+                        // Sign out and navigate
+                        auth.signOut()
+                        Log.d("FacultyHomeScreen", "User signed out successfully")
+                        Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
+                        listener?.onStdLogout()
+                        findNavController().popBackStack(R.id.studentHomePage, false)
+
+                        // Use safe navigation
+                        if (isAdded && findNavController().currentDestination?.id == R.id.studentHomePage) {
+                            Log.d("FacultyHomeScreen", "Navigating to main login screen")
+
+                        } else {
+                            Log.e("FacultyHomeScreen", "Navigation action is invalid or fragment is not attached")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("FacultyHomeScreen", "Error during logout navigation", e)
+                        Toast.makeText(requireContext(), "An error occurred during logout", Toast.LENGTH_SHORT).show()
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setUpPieChart(){
 
+        val pieChart=binding.pieChart
         //Make array of PieEntry
         val list:ArrayList<PieEntry> = ArrayList()
 
         list.add(PieEntry(10f))
         list.add(PieEntry(20f))
+        list.add(PieEntry(15f))
 
 
-        val pieDataset= PieDataSet(list,"List")
+        val pieDataset=PieDataSet(list,"List")
 
         // Define a custom color list for each label
         val colors: ArrayList<Int> = ArrayList()
-        //context?.let { ContextCompat.getColor(it, R.color.green) }?.let { colors.add(it) }
-        context?.let { ContextCompat.getColor(it, R.color.bluedark) }?.let { colors.add(it) }
+        context?.let { ContextCompat.getColor(it, R.color.blue) }?.let { colors.add(it) }       // Emergency
+        context?.let { ContextCompat.getColor(it, R.color.green_bright) }?.let { colors.add(it) }       //pending
+        context?.let { ContextCompat.getColor(it, R.color.grey) }?.let { colors.add(it) }  //confirmed
+            // Cancelled
 
 
         // Set the custom colors to the dataset
@@ -63,7 +121,7 @@ class StudentHomePage : Fragment() {
 
 
 
-        val pieData= PieData(pieDataset)
+        val pieData=PieData(pieDataset)
         pieChart.data=pieData
 
         pieChart.centerText="Today Stats"
@@ -76,10 +134,11 @@ class StudentHomePage : Fragment() {
 
     }
     private fun setUpCustomLegend() {
-        val labels = listOf("Marked Attendance","Total Attendance")
+        val labels = listOf( "Present %", "Present %", "Present %",)
         val colors = listOf(
-           // R.color.green,
-            R.color.bluedark,
+            R.color.blue,
+            R.color.green_bright,
+            R.color.grey,
 
         )
 
@@ -126,5 +185,9 @@ class StudentHomePage : Fragment() {
             binding.customLegendLayout.addView(legendItemLayout)
         }
     }
+    interface OnStdLogoutListener {
+        fun onStdLogout()
+    }
+
 
 }
