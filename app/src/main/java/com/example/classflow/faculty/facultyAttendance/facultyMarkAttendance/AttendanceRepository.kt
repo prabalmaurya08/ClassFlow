@@ -60,6 +60,7 @@ class AttendanceRepository {
                 } else {
                     // If the sectionName document doesn't exist, create it with the subjectInfo field
                     val newSubjectInfo = mapOf("subjectInfo" to listOf(subjectName))
+
                     sectionRef.set(newSubjectInfo)
                         .addOnFailureListener { e ->
                             Log.e("ViewModel", "Error creating sectionName document: ${e.message}")

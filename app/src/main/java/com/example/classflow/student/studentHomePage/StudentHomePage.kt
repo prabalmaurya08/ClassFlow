@@ -20,7 +20,7 @@ import com.github.mikephil.charting.data.PieEntry
 class StudentHomePage : Fragment() {
     private var _binding: FragmentStudentHomePageBinding? = null
     private val binding get() = _binding!!
-    private lateinit var pieChart: PieChart
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,24 +37,28 @@ class StudentHomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // setUpPieChart()
+       setUpPieChart()
     }
 
     private fun setUpPieChart(){
 
+val pieChart=binding.pieChart
         //Make array of PieEntry
         val list:ArrayList<PieEntry> = ArrayList()
 
         list.add(PieEntry(10f))
         list.add(PieEntry(20f))
+        list.add(PieEntry(15f))
 
 
-        val pieDataset= PieDataSet(list,"List")
+        val pieDataset=PieDataSet(list,"List")
 
         // Define a custom color list for each label
         val colors: ArrayList<Int> = ArrayList()
-        //context?.let { ContextCompat.getColor(it, R.color.green) }?.let { colors.add(it) }
-        context?.let { ContextCompat.getColor(it, R.color.bluedark) }?.let { colors.add(it) }
+        context?.let { ContextCompat.getColor(it, R.color.blue) }?.let { colors.add(it) }       // Emergency
+        context?.let { ContextCompat.getColor(it, R.color.green_bright) }?.let { colors.add(it) }       //pending
+        context?.let { ContextCompat.getColor(it, R.color.grey) }?.let { colors.add(it) }  //confirmed
+            // Cancelled
 
 
         // Set the custom colors to the dataset
@@ -63,7 +67,7 @@ class StudentHomePage : Fragment() {
 
 
 
-        val pieData= PieData(pieDataset)
+        val pieData=PieData(pieDataset)
         pieChart.data=pieData
 
         pieChart.centerText="Today Stats"
@@ -76,10 +80,11 @@ class StudentHomePage : Fragment() {
 
     }
     private fun setUpCustomLegend() {
-        val labels = listOf("Marked Attendance","Total Attendance")
+        val labels = listOf( "Present %", "Present %", "Present %",)
         val colors = listOf(
-           // R.color.green,
-            R.color.bluedark,
+            R.color.blue,
+            R.color.green_bright,
+            R.color.grey,
 
         )
 
@@ -126,5 +131,6 @@ class StudentHomePage : Fragment() {
             binding.customLegendLayout.addView(legendItemLayout)
         }
     }
+
 
 }

@@ -43,8 +43,9 @@ class AdminLogin : Fragment() {
         }
 
 
-        binding.toolbar.setOnClickListener {
-            findNavController().navigate(R.id.action_adminLogin2_to_mainLogin)
+
+        binding.toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
 
         return binding.root

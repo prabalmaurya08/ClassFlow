@@ -155,6 +155,16 @@ class UserRepository {
             Result.failure(e)
         }
     }
+    suspend fun facultyLogin(email: String, password: String): Result<String> {
+        return try {
+            val authResult = auth.signInWithEmailAndPassword(email, password).await()
+            val userId = authResult.user?.uid ?: ""
+
+            Result.success(userId)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 
     fun getUserRole(userId: String): LiveData<String> {
         val userRole = MutableLiveData<String>()
