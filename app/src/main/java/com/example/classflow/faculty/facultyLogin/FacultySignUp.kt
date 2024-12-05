@@ -36,8 +36,8 @@ class FacultySignUp : Fragment() {
         viewModel= ViewModelProvider(this)[FacultyLoginViewModel::class.java]
         binding.FacultySignUpButton.setOnClickListener {
             val name=binding.FacultyEnterName.text.toString()
-            val email=binding.FacultySignUpEmailAddress.text.toString()
-            val password=binding.FacultySignUppassword.text.toString()
+            val email=binding.FacultySignUpEmailAddress.text.toString().trim()
+            val password=binding.FacultySignUppassword.text.toString().trim()
 
             val facultyId=binding.FacultyId.text.toString()
             val facultyUser= User(name,email,password,"faculty", facultyId = facultyId)
@@ -50,7 +50,7 @@ class FacultySignUp : Fragment() {
                 findNavController().navigate(R.id.action_facultySignUp_to_mainLogin)
             }
             else{
-                binding.FacultySignUpEmailAddress.error="Email Already Exists"
+
             }
         }
 

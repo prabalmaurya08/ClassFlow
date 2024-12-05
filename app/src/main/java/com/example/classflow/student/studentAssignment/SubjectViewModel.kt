@@ -79,7 +79,7 @@ class SubjectViewModel : ViewModel() {
                         _subjects.postValue(subjectList)
                     }
                 } else {
-                    _errorMessage.postValue("Section document not found.")
+                    _errorMessage.postValue("Assignment Not Uploaded Yet.......")
                 }
             } catch (e: Exception) {
                 _errorMessage.postValue("Error fetching subjects: ${e.message}")

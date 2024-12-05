@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_adminMainScreen_to_adminFacultyDetailScreen"
             app:destination="@id/adminFacultyDetailScreen" />
+        <action
+            android:id="@+id/action_adminMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <!-- Faculty Upload Time Table and Class Allot -->
@@ -106,6 +109,9 @@
         <action
             android:id="@+id/action_facultyMainScreen_to_facultyAssignmentDetail"
             app:destination="@id/facultyAssignmentDetail" />
+        <action
+            android:id="@+id/action_facultyMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <fragment
@@ -127,6 +133,9 @@
                 android:name="subjectName"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_studentMainScreen_to_mainLogin"
+            app:destination="@id/mainLogin" />
     </fragment>
 
     <fragment

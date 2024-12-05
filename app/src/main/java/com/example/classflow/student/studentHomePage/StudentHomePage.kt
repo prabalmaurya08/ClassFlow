@@ -1,17 +1,21 @@
 package com.example.classflow.student.studentHomePage
 
+import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.classflow.R
 import com.example.classflow.databinding.FragmentStudentHomePageBinding
+import com.example.classflow.faculty.facultyhome.FacultyHomeScreen.OnLogoutListener
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
@@ -27,7 +31,21 @@ class StudentHomePage : Fragment() {
     private var _binding: FragmentStudentHomePageBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
+
+
+    // Firebase Authentication instance
+
+    private var listener: OnStdLogoutListener? = null
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Attach the listener to the hosting activity or parent fragment
+        if (context is OnStdLogoutListener) {
+            listener = context
+        } else {
+            throw ClassCastException("$context must implement OnLogoutListener")
+        }
+    }
+            override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -46,19 +64,34 @@ class StudentHomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.toolbar.setOnMenuItemClickListener { item ->
-//            when (item.itemId) {
-//                R.id.action_logout -> {
-//                    // Call the logout function
-//                    auth.signOut()
-//                    findNavController().navigate(R.id.action_studentHomePage_to_mainLogin)
-//
-//                    true
-//                }
-//                else -> false
-//            }
-//
-//    }
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    Log.d("FacultyHomeScreen", "Logout menu clicked")
+                    try {
+                        // Sign out and navigate
+                        auth.signOut()
+                        Log.d("FacultyHomeScreen", "User signed out successfully")
+                        Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
+                        listener?.onStdLogout()
+                        findNavController().popBackStack(R.id.studentHomePage, false)
+
+                        // Use safe navigation
+                        if (isAdded && findNavController().currentDestination?.id == R.id.studentHomePage) {
+                            Log.d("FacultyHomeScreen", "Navigating to main login screen")
+
+                        } else {
+                            Log.e("FacultyHomeScreen", "Navigation action is invalid or fragment is not attached")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("FacultyHomeScreen", "Error during logout navigation", e)
+                        Toast.makeText(requireContext(), "An error occurred during logout", Toast.LENGTH_SHORT).show()
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setUpPieChart(){
@@ -151,6 +184,9 @@ class StudentHomePage : Fragment() {
             // Add the legend item layout to the custom legend layout
             binding.customLegendLayout.addView(legendItemLayout)
         }
+    }
+    interface OnStdLogoutListener {
+        fun onStdLogout()
     }
 
 

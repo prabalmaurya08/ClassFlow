@@ -1,5 +1,6 @@
 package com.example.classflow.faculty.facultyhome
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -25,6 +26,16 @@ class FacultyHomeScreen : Fragment() {
 
     // Firebase Authentication instance
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var listener: OnLogoutListener? = null
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        // Attach the listener to the hosting activity or parent fragment
+        if (context is OnLogoutListener) {
+            listener = context
+        } else {
+            throw ClassCastException("$context must implement OnLogoutListener")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,16 +49,32 @@ class FacultyHomeScreen : Fragment() {
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_logout -> {
-                    // Call the logout function
-                    auth.signOut()
-                    findNavController().navigate(R.id.action_facultyhomescreen_to_mainLogin)
+                    Log.d("FacultyHomeScreen", "Logout menu clicked")
+                    try {
+                        // Sign out and navigate
+                        auth.signOut()
+                        Log.d("FacultyHomeScreen", "User signed out successfully")
+                        Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
+                        listener?.onLogout()
+                        findNavController().popBackStack(R.id.facultyhomescreen, false)
 
+                        // Use safe navigation
+                        if (isAdded && findNavController().currentDestination?.id == R.id.facultyhomescreen) {
+                            Log.d("FacultyHomeScreen", "Navigating to main login screen")
+
+                        } else {
+                            Log.e("FacultyHomeScreen", "Navigation action is invalid or fragment is not attached")
+                        }
+                    } catch (e: Exception) {
+                        Log.e("FacultyHomeScreen", "Error during logout navigation", e)
+                        Toast.makeText(requireContext(), "An error occurred during logout", Toast.LENGTH_SHORT).show()
+                    }
                     true
                 }
-
                 else -> false
             }
         }
+
 
         // Initialize RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -95,6 +122,11 @@ class FacultyHomeScreen : Fragment() {
 
 
     }
+
+    interface OnLogoutListener {
+        fun onLogout()
+    }
+
 
 
 
