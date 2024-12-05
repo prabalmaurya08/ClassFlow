@@ -15,7 +15,8 @@
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
 
         <!--        top nav bar shadow (jugad)-->
@@ -23,11 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/logoclassflow"
-
             app:title="HomePage"
-
             app:titleCentered="true"
-            app:titleTextColor="@color/blue">
+            app:titleTextColor="@color/blue"
+            app:menu="@menu/toolbar_logout" >
 
         </com.google.android.material.appbar.MaterialToolbar>
         <!--        top nav bar shadow (jugad)-->
